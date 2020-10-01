@@ -1,0 +1,51 @@
+{{>headdashboard}}
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Sidebar-->
+    {{>sidebardashboard}}
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        {{>topbar}}
+
+        <!-- End of Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container">
+
+          <script src="js/jscolor.js"></script>
+
+Color: <input class="jscolor {onFineChange:'update(this)'}" value="cc66ff">
+
+<script>
+function update(jscolor) {
+    // 'jscolor' instance can be used as a string
+    document.getElementById('accordionSidebar').style.backgroundColor = '#' + jscolor
+}
+</script>
+
+
+
+
+          <!-- Content Row final space -->
+              <div class="row">
+                <!-- Content Column -->
+                  <div class="col-lg-6 mb-4"></div>
+                  <div class="col-lg-6 mb-4"></div>
+              </div>
+          <!-- Content Row final space-->
+          </div>
+          <!-- /.container-fluid -->
+          </div>
+          <!-- End of Main Content -->
+          <!-- Footer -->
+
+
+          {{>footerdashboard}}
+          </div>
+          <!-- End of Content Wrapper -->
+          </div>
+          <!-- End of Page Wrapper -->
+</div>

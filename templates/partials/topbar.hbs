@@ -1,0 +1,226 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+  <!-- Sidebar Toggle (Topbar) -->
+  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <i class="fa fa-bars"></i>
+  </button>
+
+<ul class="navbar-nav ml-auto">
+{{#if session}}
+  <!-- Nav Item - Alerts -->
+  <li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-bell fa-fw"></i>
+      <!-- Counter - Alerts -->
+      <span class="badge badge-danger badge-counter">3+</span>
+    </a>
+    <!-- Dropdown - Alerts -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+      <h6 class="dropdown-header">
+        Alerts Center
+      </h6>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="mr-3">
+          <div class="icon-circle bg-primary">
+            <i class="fas fa-file-alt text-white"></i>
+          </div>
+        </div>
+        <div>
+          <div class="small text-gray-500">Abril 29, 2019</div>
+          <span class="font-weight-bold">Descarga resporte</span>
+        </div>
+      </a>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="mr-3">
+          <div class="icon-circle bg-success">
+            <i class="fas fa-donate text-white"></i>
+          </div>
+        </div>
+        <div>
+          <div class="small text-gray-500">Abril 29, 2019</div>
+          Nuevas inscripciones
+        </div>
+      </a>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="mr-3">
+          <div class="icon-circle bg-warning">
+            <i class="fas fa-exclamation-triangle text-white"></i>
+          </div>
+        </div>
+        <div>
+          <div class="small text-gray-500">Abril 29, 2019</div>
+          Crea usuarios!
+        </div>
+      </a>
+      <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar todas las alertas</a>
+    </div>
+  </li>
+
+  <!-- Nav Item - Messages -->
+  <li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-envelope fa-fw"></i>
+      <!-- Counter - Messages -->
+      <span class="badge badge-danger badge-counter">7</span>
+    </a>
+    <!-- Dropdown - Messages -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+      <h6 class="dropdown-header">
+        Centro de mensajes
+      </h6>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="dropdown-list-image mr-3">
+          <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+          <div class="status-indicator bg-success"></div>
+        </div>
+        <div class="font-weight-bold">
+          <div class="text-truncate">Hola!</div>
+          <div class="small text-gray-500">Edward</div>
+        </div>
+      </a>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="dropdown-list-image mr-3">
+          <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+          <div class="status-indicator"></div>
+        </div>
+        <div>
+          <div class="text-truncate">Alguna preguna?</div>
+          <div class="small text-gray-500">Valentina · 1d</div>
+        </div>
+      </a>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="dropdown-list-image mr-3">
+          <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+          <div class="status-indicator bg-warning"></div>
+        </div>
+        <div>
+          <div class="text-truncate">Nuevas noticias</div>
+          <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+        </div>
+      </a>
+      <a class="dropdown-item d-flex align-items-center" href="#">
+        <div class="dropdown-list-image mr-3">
+          <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+          <div class="status-indicator bg-success"></div>
+        </div>
+        <div>
+          <div class="text-truncate">Ten un buen día</div>
+          <div class="small text-gray-500">Chicken the Dog · 2w</div>
+        </div>
+      </a>
+      <a class="dropdown-item text-center small text-gray-500" href="#">Lee más mensajes</a>
+    </div>
+  </li>
+{{else}}
+    <!-- Nav Item - Alerts -->
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <!-- Counter - Alerts -->
+        <span class="badge badge-danger badge-counter">0</span>
+      </a>
+      <!-- Dropdown - Alerts -->
+      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+          Centro de alertas
+        </h6>
+        <a class="dropdown-item d-flex align-items-center" href="#">
+          <div class="mr-3">
+            <div class="icon-circle bg-primary">
+              <i class="fas fa-file-alt text-white"></i>
+            </div>
+          </div>
+          <div>
+            <div class="small text-gray-500">2019</div>
+            <span class="font-weight-bold">Sin asuntos pendiendes</span>
+          </div>
+        </a>
+    </li>
+
+    <!-- Nav Item - Messages -->
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-envelope fa-fw"></i>
+        <!-- Counter - Messages -->
+        <span class="badge badge-danger badge-counter">0</span>
+      </a>
+      <!-- Dropdown - Messages -->
+      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+        <h6 class="dropdown-header">
+          Centro de mensajes
+        </h6>
+        <a class="dropdown-item d-flex align-items-center" href="#">
+          <div class="dropdown-list-image mr-3">
+            <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+            <div class="status-indicator bg-success"></div>
+          </div>
+          <div class="font-weight-bold">
+            <div class="text-truncate">Hola!, Bienvenido.</div>
+            <div class="small text-gray-500">Valentina Developer</div>
+          </div>
+        </a>
+    </li>
+{{/if}}
+
+
+  <div class="topbar-divider d-none d-sm-block"></div>
+  {{#if session}}
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{email}}</span>
+          {{#if avatar}}
+          <img class="img-profile rounded-circle" src="data:img/jpeg;base64,{{avatar}}">
+          {{else}}
+          <img class="img-profile rounded-circle" src="https://cdn.onlinewebfonts.com/svg/thumbnails_60_462217.png">
+          {{/if}}
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="/dashboardprofile">
+            <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Perfil
+          </a>
+          {{#if coordinador}}
+          <a class="dropdown-item" href="/dashboardadmin">
+            <i class="fa fa-tachometer fa-sm fa-fw mr-2 text-gray-400"></i>
+            Dashboard
+          </a>
+          {{else}}
+          <a class="dropdown-item" href="/dashboarduser">
+            <i class="fa fa-tachometer fa-sm fa-fw mr-2 text-gray-400"></i>
+            Dashboard
+          </a>
+          {{/if}}
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Salir
+          </a>
+        </div>
+      </li>
+    {{else}}
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenido!</span>
+        <img class="img-profile rounded-circle" src="https://cdn.onlinewebfonts.com/svg/thumbnails_60_462217.png">
+      </a>
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="/register">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Registrarse
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/loginregister" >
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Entrar
+        </a>
+      </div>
+    </li>
+  {{/if}}
+
+</ul>
+
+</nav>
