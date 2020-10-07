@@ -711,7 +711,7 @@ app.get('/exit', (req, res) =>{
 			if (err){
 				return console.log(err)
 			}
-			res.render ('indexdashboard',{
+			res.render ('landing',{
 				listado : result
 			})
 		})
