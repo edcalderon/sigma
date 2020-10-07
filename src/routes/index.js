@@ -5,10 +5,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
-const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(APIKEY);
@@ -36,13 +34,11 @@ app.use(session({
 }))
 
 // Paths
-
 app.get('/', (req, res) =>{	
 	res.render ('landing',{
 
 	})
 });
-
 
 app.get('/VIEJA', (req, res) =>{
 	//Cantidad de cursos disponibles
@@ -81,8 +77,7 @@ app.get('/indexdashboard', (req, res) =>{
 
 app.get('/loginregister', (req, res) =>{
   	res.render('loginregister', {
-
-		})
+	})
 });
 
 app.post('/loginregister', (req, res) =>{
@@ -111,7 +106,6 @@ app.post('/loginregister', (req, res) =>{
 				})
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "coordinador"){
-
 				// session variables
 				req.session.user = result._id
 				req.session.roll = result.roll
@@ -124,17 +118,8 @@ app.post('/loginregister', (req, res) =>{
 				if(result.avatar){
 					req.session.avatar = result.avatar.toString('base64')
 				}
-				// jwt jsonwebtoken creation
-				//  let token = jwt.sign({
-				// 		user: result
-				// 	}, 'word-secret',{expiresIn: '4h'});
-			 	// // Save token in localstorage
-				//    localStorage.setItem('token', token);
-				res.render('loginregister', {
-					login: req.body.login,
-					show: "Bienvenido coordinador.",
-					path: "/dashboardadmin",
-					button: "success",
+				res.render('dashboardadmin', {
+					coordinador: req.session.coordinador,
 				})
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "aspirante"){
@@ -195,7 +180,7 @@ app.post('/loginregister', (req, res) =>{
 		})
 });
 
-app.get('/dashboarduser', (req, res) =>{
+app.get('/dashboarduser', (req, res) => {
 	//lista de cursos inscritos
 	Course.find({students: { $elemMatch: {cedula:req.session.cc,nombre:req.session.firstname}}},(err,result)=>{
 		if (err){
@@ -379,7 +364,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		console.log('CursosDisponibles: ' + result)
 		req.session.cursosDisponibles = result;
 	})
-
 	//Cantidad de cursos cerrados
 	Course.countDocuments({state: "Cerrado"},(err,result)=>{
 		if(err){
@@ -388,7 +372,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		console.log('CursosCerrado: ' + result)
 		req.session.cursosCerrados = result;
 	})
-
 	//Cursos cerrados y valorCursosInscritos
 	Course.aggregate([{$match: { state: "Cerrado" }},{$project: {_id: 0, valAvg: {$avg: "$value" }}}],(err,result)=>{
 		if(err){
@@ -396,7 +379,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		}
 		console.log(result)
 	})
-
 	Course.aggregate([{$group: { _id: "$value",total: { $sum: { $size: "$students"} }}}],(err,result)=>{
 		if(err){
 			console.log(err)
@@ -411,7 +393,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		console.log(ganancia)
 		req.session.ganancia = ganancia;
 	})
-
 	//Cantidad de Inscritos por curso
 	//Con lo siguiente se podria hacer una grafica
 	Course.aggregate([{$group: { _id: "$name",total: { $sum: { $size: "$students"} }}}],(err,result)=>{
@@ -426,7 +407,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		console.log(result)
 		req.session.datos = data;
 	})
-
 	//listado de usuarios
 	User.find({},(err,users)=>{
 		if (err){
@@ -463,7 +443,8 @@ app.get('/dashboardadmin', (req, res) =>{
 			data: req.session.datos,
 			cantidadCursosDisponibles: req.session.cursosDisponibles,
 			cursosCerrados: req.session.cursosCerrados,
-			ganancia: req.session.ganancia
+			ganancia: req.session.ganancia,
+			coordinador: req.session.coordinador
 		})
 	})
 });
