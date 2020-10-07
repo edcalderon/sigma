@@ -36,7 +36,15 @@ app.use(session({
 }))
 
 // Paths
-app.get('/', (req, res) =>{
+
+app.get('/', (req, res) =>{	
+	res.render ('landing',{
+
+	})
+});
+
+
+app.get('/VIEJA', (req, res) =>{
 	//Cantidad de cursos disponibles
 	Course.countDocuments({state: "Disponible"},(err,result)=>{
 		if(err){
