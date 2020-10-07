@@ -585,6 +585,12 @@ app.get('/custompage', (req, res) =>{
 	res.render('custompage')
 })
 
+app.get('/createitem', (req, res) =>{
+	res.render('dashboardadmin',{
+		createItem:true
+	})
+});
+
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardupdateuser')
 })

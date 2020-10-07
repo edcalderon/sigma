@@ -1,0 +1,108 @@
+
+    <form action="/createproduct" enctype="multipart/form-data" method="POST">
+        <div class="form-body">
+            <h5 class="card-title">Información del articulo</h5>
+            <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control"  placeholder="Ingrese el nombre del articulo" required> 
+                        </div>                                               
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" ><i class="was-validated"></i>
+                            <label class="control-label">Categoria</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="categoria" placeholder="Escoge una Categoria" required>                    
+                                    <option value="">Elige la categoria del producto</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Mercado">Mercado</option>
+                                    <option value="Electrodomesticos">Electrodomesticos</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor seleccione una Categoria</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" ><i class="was-validated"></i>
+                            <label class="control-label">Categoria</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="categoria" placeholder="Escoge una Categoria" required>                    
+                                    <option value="">Elige la categoria del producto</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Mercado">Mercado</option>
+                                    <option value="Electrodomesticos">Electrodomesticos</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor seleccione una Categoria</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" ><i class="was-validated"></i>
+                            <label class="control-label">Categoria</label>
+                            <div class="input-group">
+                                <select class="custom-select" name="categoria" placeholder="Escoge una Categoria" required>                    
+                                    <option value="">Elige la categoria del producto</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Mercado">Mercado</option>
+                                    <option value="Electrodomesticos">Electrodomesticos</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor seleccione una Categoria</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="control-label">Precio</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="precio" placeholder="Ingrese el precio" aria-label="precio" aria-describedby="basic-addon1" required>                                                                                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">Precio</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="precio" placeholder="Ingrese el precio" aria-label="precio" aria-describedby="basic-addon1" required>                                                                                            
+                        </div>
+                    </div>
+                </div>
+                <h5 class="card-title m-t-40">Descripción del Producto</h5>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            <textarea class="form-control" name="descripcion" rows="4" placeholder="Ingrese una descripción"></textarea>                                                
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="card-title m-t-20">Imagen del Producto</h5>
+                        <div class="el-element-overlay">
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> 
+                                    <img class="image-product" src="../../assets/images/gallery/product_default.png" alt="user"/>
+                                </div>
+                            </div>
+                        </div>
+                        <br>    
+
+                        <div class="input-group mb-3">
+                            <div class="btn btn-info waves-effect waves-light"><span>Cargar otra imagen</span>
+                                <input type="file" name="imagenProducto" accept="image/*" class="upload" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <hr>
+        </div>
+        <div class="form-actions m-t-40">
+            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar </button>
+
+        </div>
+    </form>
+               
