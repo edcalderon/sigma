@@ -1,5 +1,5 @@
 {{>headdashboard}}
-<body id="page-top">
+<body id="page-top" class="sidebar-toggled">
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Sidebar-->
@@ -18,8 +18,7 @@
           {{#if coordinador}}
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard - {{roll}}</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <h1 class="h3 mb-0 text-gray-800">Panel de control {{roll}}</h1>
           </div>
 
           <!-- Content Row -->
@@ -106,10 +105,10 @@
           <!-- Content Row -->
           <div class="row">
             <!-- Area Chart -->
-            <div class="col-xl-4 col-lg-7">
+            <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              {{!--   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Crear cursos</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,100 +122,20 @@
                       <a class="dropdown-item" href="#">Proximamente nuevas funciones</a>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <!-- Card Body -->
                 <div class="card-body py-3 d-flex flex-row align-items-center">
                   <div class="col-xl-12">
                        <div class="form-style-3">
                            <div class="row justify-content-center">
-                             <div class="col-xl-12">
-                               {{#if resultshow}}
-                                <div id="mydiv" class="card text-white bg-{{cardcolor}}">
-                                    <div class="card-body">
-                                      <p class="card-text">{{resultshow}}</p>
-                                    </div>
-                                </div><br>
-                               {{/if}}
-                              </div>
-                             <form action="/dashboardadmin" method="post">
-                                <fieldset><legend>Informacion general del curso</legend>
-                                  <label for="field1"><span>Nombre<span class="required">*</span></span><input type="text" class="input-field" name="nombreCurso"  required /></label>
-                                  <label for="field2"><span>Valor <span class="required">*</span></span><input type="text"  class="input-field" name="valor" required /></label>
-                                  <label for="field3"><span>Intensidad <span class="required">*</span></span><input type="text" class="input-field" name="intensidad"  required /></label>
-                                  <label for="field4"><span>Modalidad</span><select name="modalidad" class="select-field">
-                                  <option value="Presencial">Presencial</option>
-                                  <option value="Virtual">Virtual</option>
-                                  </select></label>
-                                  <label for="field4"><span>Estado</span><select name="estado" class="select-field">
-                                  <option value="Disponible">Disponible</option>
-                                  <option value="En espera">En espera</option>
-                                  </select></label>
-                                </fieldset>
-                                <fieldset><legend>Descripcion del curso</legend>
-                                  <label for="field6"><span>Descripcion <span class="required">*</span></span><textarea name="descripcion" class="textarea-field" required ></textarea></label>
-                                </fieldset>
-                                <div class="form-group">
-                                  <button class="btn btn-primary btn-block" name="guardar_curso" type="submit">Guardar</button>
-                                </div>
-                              </form>
+                             
                           </div>
                         </div>
                       </div>
                   </div>
               <!-- Card Body -->
             </div>
-          </div>
-          <!-- Area Chart -->
-          <div class="col-xl-8 col-lg-8">
-            <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Cursos</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">¿QUÉ QUIERES HACER?:</div>
-                    <a class="dropdown-item" href="/dashboardadmin?verCursosDisponibles=true">Ver cursos</a>
-                    <a class="dropdown-item" href="/dashboardadmin?verUsuarios=true">Ver usuarios</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Card Body -->
-              <div  class="card-body" style="overflow-x:auto;">
-                  {{#if verCursosDisponibles}}
-                      {{{closeCourse courses}}}
-                  {{/if}}
-
-                  {{#if verUsuarios}}
-                    {{{modifyUser misusuarios}}}
-                  {{/if}}
-
-                  <div class="col-sm" style="overflow-x:auto;">
-                  {{#if resultshow2}}
-                    <div id="mydiv" class="card text-white bg-{{cardcolor2}}">
-                        <div class="card text-white bg-{{cardcolor2}}">
-                          <div class="card-body">
-                            <p class="card-text">{{resultshow2}}</p>
-                          </div>
-                        </div>
-                    </div><br>
-                  {{/if}}
-                  </div>
-              </div>
-            </div>
-          </div>
-          <!-- Pie Chart -->
-          <!-- Content Row final space -->
-              <div class="row">
-                <!-- Content Column -->
-                  <div class="col-lg-6 mb-4"></div>
-                  <div class="col-lg-6 mb-4"></div>
-              </div>
-          <!-- Content Row final space-->
+          </div> 
         </div>
         <!-- /.container-fluid -->
         {{else}}
@@ -250,9 +169,10 @@
       </div>
       <!-- End of Main Content -->
     <!-- Footer -->
-    {{>footerdashboard}}
+    
   </div>
   <!-- End of Content Wrapper -->
+  {{>footerdashboard}}
 </div>
 <!-- End of Page Wrapper -->
 

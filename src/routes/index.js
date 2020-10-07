@@ -120,6 +120,10 @@ app.post('/loginregister', (req, res) =>{
 				}
 				res.render('dashboardadmin', {
 					coordinador: req.session.coordinador,
+					roll: req.session.roll,
+					avatar: req.session.avatar,
+					email: req.session.email,
+					session: req.session.user,
 				})
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "aspirante"){
@@ -454,12 +458,12 @@ app.post('/dashboardadmin', (req, res) =>{
 	if(req.body.nombreCurso){
 	  	 let course = new Course ({
 				name: req.body.nombreCurso,
-	      description: req.body.descripcion,
+				description: req.body.descripcion,
 				value: req.body.valor,
 				intensity: req.body.intensidad,
 				modality: req.body.modalidad,
 				state:  req.body.estado,
-			  students: []
+				students: []
 			 })
 			 course.save((err,result) =>{
 				 if(err){
