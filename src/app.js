@@ -6,19 +6,17 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const data = require('./data');
 const session = require('express-session');
-const jwt = require('jsonwebtoken');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 
-// Models mongodb
+// Models mongodb 
 const User = require('./models/user');
+const { Usuarios } = require('./models/usuarioschat');
 
 // Sockets connection
 let counter = 0;
-const { Usuarios } = require('./models/usuarioschat');
 const usuarios = new Usuarios();
 
 io.on('connection', client => {
@@ -63,8 +61,6 @@ io.on('connection', client => {
     })
   })
 
-
-
   client.on("textoPrivado", (text, callback) =>{
     let usuario = usuarios.getUsuario(client.id)
     let texto = `${usuario.nombre} : ${text.mensajePrivado}`
@@ -88,11 +84,8 @@ app.use(session({
 	saveUninitialized: true
 }))
 
-// Paths
-const directory_public = path.join(__dirname, '../public');
-const directory_templates = path.join(__dirname, '../templates');   //There is the folder with all the views in html and the partials footer and header
-
 // Static
+const directory_public = path.join(__dirname, '../public');
 app.use(express.static(directory_public));
 
 // Middlewares
@@ -148,7 +141,9 @@ app.use((req,res,next) => {
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Routes
-app.use(require('./routes/index'));
+app.use(require('./routes/landingRoutes'))
+app.use(require('./routes/dashboardRoutes'));
+
 //app.use(multer({dest:'./../routes/index'}).any());
 
 //mongoose Conection

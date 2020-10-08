@@ -67,23 +67,6 @@ const guardarUsuarios = () => {
 
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
   Curso,
   listadecursos,
