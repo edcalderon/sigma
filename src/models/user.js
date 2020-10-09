@@ -44,10 +44,8 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  cursos: {
-    type: Array,
-    required: true,
-    trim: true
+  borrowedEquipments: {
+    type: Array
   },
   avatar: {
     type: Buffer
@@ -56,5 +54,4 @@ const userSchema = new Schema({
 
 // create mongoose model
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;
