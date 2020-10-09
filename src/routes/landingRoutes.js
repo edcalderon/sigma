@@ -16,7 +16,7 @@ app.set('view engine', 'hbs');//Le configuramos el motor de templates o de vista
 
 
 // Models mongodb
-const User = require('./../models/user');
+const User = require('../models/user');
 
 // Session
 app.use(session({
