@@ -4,6 +4,9 @@ const path = require('path');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const{APIKEY} = require('../config/config');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(APIKEY);
 
 // Directory Paths
 const directorio_partials = path.join(__dirname, './../templates/partials');
@@ -97,15 +100,13 @@ app.post('/loginregister', (req, res) =>{
 				if(result.avatar){
 					req.session.avatar = result.avatar.toString('base64')
 				}
-
-				res.render('loginregister', {
-					login: req.body.login,
+				res.render('dashboarduser', {
+/* 					login: req.body.login,
 					show: "Usuario y Contraseña correctas! ya puedes continuar.",
 					path: "/dashboarduser",
-					button: "success",
+					button: "success", */
 				})
 			}
-
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "profesor"){
 				// session variables
 				req.session.user = result._id
@@ -119,11 +120,11 @@ app.post('/loginregister', (req, res) =>{
 					req.session.avatar = result.avatar.toString('base64')
 				}
 
-				 res.render('loginregister', {
-					login: req.body.login,
+				 res.render('dashboardteacher', {
+/* 					login: req.body.login,
 					show: "Bienvenido profesor",
 					path: "/dashboardteacher",
-					button: "success",
+					button: "success", */
 				})
 			}
 		})
@@ -162,7 +163,6 @@ app.post('/register', (req, res) =>{
 		};
         // send mail
 		sgMail.send(mailmsg)
-
 		res.render('register',{
 			registro: req.body.registro,
 			show: "<a href='/loginregister' >Registro exitoso! ya puedes ingresar </a>"

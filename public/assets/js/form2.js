@@ -12,7 +12,9 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("regForm").submit();
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
@@ -23,7 +25,6 @@ function showTab(n) {
 
 function nextPrev(n) {
   // This function will figure out which tab to display
-
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) return false;
@@ -31,11 +32,9 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  // if you have reached the end of the form...
+  // if you have reached the end of the form...192
   if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
+    return false; 
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
