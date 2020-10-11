@@ -1,21 +1,23 @@
 const hbs = require('hbs');
-const fs = require('fs');
-const data = require('./../data.js');
-const app = require('./../app.js');
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
-const listaCursos = data.listadecursos;
 const User = require('./../models/user');
 const Course = require('./../models/course');
-const session = require('express-session');
 
-const listaUsuarios = data.listadeusuarios;
-listaPersonas = data.listadeusuarios;
 listaInscritos = [];
 listaActualizaUsuarios = [];
 
-//Listar cursos disponibles mongo (interesados)
+hbs.registerHelper('equipments', (listado) => {
+	let texto = "";
+	listado = [1,2,3,4,5,6,7,8,9]
+	listado.forEach ( item => { 
+		texto = texto + ` <div class="grid-item"> <img style="border-radius:0px; max-width:60px;" src="assets/img/computer.svg.png"/> </div> `;
+	});
+	return texto;
+});
 
+
+//Listar cursos disponibles mongo (interesados)
 hbs.registerHelper('disponibleCourses', (listado) => {
 	let texto = " ";
 	let count = 1;
@@ -33,8 +35,8 @@ hbs.registerHelper('disponibleCourses', (listado) => {
 				     <div id="collapse${count}" class="collapse " aria-labelledby="heading${count}" data-parent="#accordion">
 				       <div class="card-body">
 				         <p>Descripción: ${curso.description}</p>
-								 <p>MODALIDAD: ${curso.modality}</p>
-								 <p>INTENSIDAD HORARIA: ${curso.intensity}</p>
+						 <p>MODALIDAD: ${curso.modality}</p>
+						 <p>INTENSIDAD HORARIA: ${curso.intensity}</p>
 				       </div>
 				     </div>
 				  </div>

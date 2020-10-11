@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const EquipmentSchemma = new Schema({
+const equipmentSchema = new Schema({
     category: {
         type: String, 
         required: true
@@ -35,7 +35,7 @@ const EquipmentSchemma = new Schema({
         required: true,
         lowercase: true  
     },
-    ram: {
+    memoryRam: {
         type: String, 
         required: true,
         lowercase: true   
@@ -70,7 +70,7 @@ const EquipmentSchemma = new Schema({
         required: true,
         lowercase: true 
     },
-    LicenseOS: {
+    licenseOS: {
         type: String, 
         required: true,
         lowercase: true 
@@ -85,7 +85,7 @@ const EquipmentSchemma = new Schema({
         required: true,
         lowercase: true
     },
-    observations: {
+    observation: {
         type: String, 
         required: true,
         lowercase: true
@@ -95,12 +95,12 @@ const EquipmentSchemma = new Schema({
         required: true,
         lowercase: true 
     },
-    recommendations: {
+    recommendation: {
         type: String, 
         required: true,
         lowercase: true 
     }
 });
 
-const Equipment = mongoose.model('Equipment', EquipmentSchema);
+const Equipment = mongoose.model('Equipment', equipmentSchema);
 module.exports = Equipment;

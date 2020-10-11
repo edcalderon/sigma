@@ -5,15 +5,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const borrowingSchema = new Schema({
-    borrowingDate: {
+    startDateAndTime: {
         type: Date,
         default: Date.now
     },
-    startTime: {
-        timestamps: true
-    },
-    endTime: {
-        timestamps: true
+    endDateAndTime: {
+        type: Date,
+        default: Date.now
     },
     devolutionState:{
         type: String,

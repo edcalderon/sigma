@@ -18,6 +18,8 @@ sgMail.setApiKey(APIKEY);
 // Models mongodb
 const User = require('../models/user');
 const Course = require('../models/course');
+const Equipment = require('../models/equipment');
+const Borrow = require('../models/borrow');
 
 // Directory Paths
 const directorio_partials = path.join(__dirname, './../templates/partials');
@@ -242,8 +244,6 @@ app.get('/dashboardadmin', (req, res) =>{
 		req.session.verCursosDisponibles = req.query.verCursosDisponibles;
 		req.session.verUsuarios =  req.query.verUsuarios
 		res.render ('dashboardadmin',{
-			tittle: 'Algo',
-			charData: JSON.stringify(json),
 			courses : req.session.courses,
 			verCursosDisponibles : req.session.verCursosDisponibles,
 			misusuarios: req.session.misusuarios,
@@ -259,31 +259,38 @@ app.get('/dashboardadmin', (req, res) =>{
 
 app.post('/dashboardadmin', (req, res) =>{
 	// Guardar cursos
-	if(req.body.nombreCurso){
-	  	 let course = new Course ({
-				name: req.body.nombreCurso,
-				description: req.body.descripcion,
-				value: req.body.valor,
-				intensity: req.body.intensidad,
-				modality: req.body.modalidad,
-				state:  req.body.estado,
-				students: []
-			 })
-			 course.save((err,result) =>{
-				 if(err){
-					 return res.render('dashboardadmin',{
-			 				result: "Error!",
-							resultshow: "Hubo un error: " + err,
-							cardcolor: "danger"
-						})
-				 }
-				 return res.render('dashboardadmin',{
-			 			result: "Hecho!",
-						resultshow: "Curso creado correctamente",
-						cardcolor: "success"
-					})
-			 })
-		}
+	let equipment = new Equipment ({
+		category: "portatil",
+		status:"disponible",
+		equipmentId: req.body.equipmentId,
+		monitorId: req.body.monitorId,
+		equipmentRef: req.body.equipmentRef,
+		monitorRef: req.body.monitorRef,
+		memoryRam:  req.body.memoryRam,
+		diskRef:  req.body.diskRef,
+		diskSpace:  req.body.diskSpace,
+		processor: req.body.processor,
+		mouse:  req.body.mouse,
+		keyboard:  req.body.keyboard,
+		OS:  req.body.os,
+		licenseOS:  req.body.osLicense,
+		officeVersion:  req.body.officeVersion,
+		officeLicense:  req.body.officeLicense,
+		observation:  req.body.observation,
+		diagnostic:  req.body.diagnostic,
+		recommendation:  req.body.recommendation
+	});
+	console.log(equipment)
+		equipment.save((err,result) =>{
+			if(err){
+				console.log(err);
+           		return;
+			} else {
+				console.log("¡Se registro el equipo!")
+				console.log(result)
+			}
+		});
+	
 		//Cerrar curso
 		if(req.body.cerrar){
 				//listado de docentes

@@ -1,43 +1,41 @@
 {{>headdashboard}}
 <link href="assets/css/multi-step-form.css" rel="stylesheet">
-
-    <div class="form-body">
-        <div class="container-fluid px-1 py-5 mx-auto">
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-9 col-lg-10 col-md-11">
-                    <div class="card rounded-0 b-0">
-
-
-
-                        <div class="card-header">
-                            <div class="row d-flex justify-content-between">
-                                <div class="">
-                                    <h5 class="yellow-text">Tell Us Little More About Your Requirement?</h5>
-                                    <h6>Simply Follow Through</h6>
-                                </div>
-                                <div class="text-md-center">
-                                    <h5 class="yellow-text">Call us</h5>
-                                    <h5><span class="fa fa-phone pr-3"></span>123 456 7891</h5>
-                                </div>
+<div class="form-body">
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-9 col-lg-10 col-md-11">
+                <div class="card rounded-0 b-0">
+                    <div class="card-header">
+                        <div class="row d-flex justify-content-between">
+                            <div class="">
+                                <h5 class="yellow-text">Tell Us Little More About Your Requirement?</h5>
+                                <h6>Simply Follow Through</h6>
+                            </div>
+                            <div class="text-md-center">
+                                <h5 class="yellow-text">Call us</h5>
+                                <h5><span class="fa fa-phone pr-3"></span>123 456 7891</h5>
                             </div>
                         </div>
-                        <div class="row d-flex justify-content-sm-end justify-content-start px-5">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    </div>
+                    <div class="row d-flex justify-content-sm-end justify-content-start px-5">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <div class="row d-flex justify-content-sm-end justify-content-start px-5">
-                            <div class="count text-center">
-                                <p class="mb-sm-0 pb-sm-0"><strong><span id="cnt">25</span>%</strong> <span
-                                        class="yellow-text">Completed</span></p>
-                            </div> 
+                    </div>
+                    <div class="row d-flex justify-content-sm-end justify-content-start px-5">
+                        <div class="count text-center">
+                            <p class="mb-sm-0 pb-sm-0"><strong><span id="cnt">25</span>%</strong> <span
+                                    class="yellow-text">Completed</span></p>
                         </div>
-                        <form id="regForm" method="POST" action="/dashboardadmin"></form>
-                        <div class="card-body show pt-0">
+                    </div>
+                    <form id="regForm" method="POST" action="/dashboardadmin">
+                        <div class="card-body show pt-0 tab">
+                            <input type="text" style="display: none" class="form-control" value="algo">
                             <h4 class="heading mb-4 pb-1">What should be done?</h4>
                             <div class="radio-group row justify-content-between px-3">
-                                <input type="text" style="display: none;" placeholder="" class="form-control" value="algo">
+                                <input type="text" style="display: none;" placeholder="" class="form-control"
+                                    value="algo">
                                 <div class="card-block radio selected">
                                     <div class="row justify-content-end d-flex px-3">
                                         <div class="fa fa-check"></div>
@@ -70,90 +68,150 @@
                                 </div>
                             </div>
                         </div>
-
-                        
-                        <div class="card-body pt-0">
-                            <h4 class="heading mb-4 pb-1">Personal details</h4> <label class="text-danger mb-3">*
-                                Required</label>
-                            <div class="form-group"> 
-                                <label class="form-control-label">First Name * :</label> 
-                                <input type="text" id="fname" name="fname" placeholder="" class="form-control">
+                        <div class="card-body pt-0 tab">
+                            <h4 class="heading mb-4 pb-1">Referencias del equipo</h4>
+                            <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group">
+                                <label class="form-control-label">Identificador del equipo * :</label>
+                                <input type="text" id="equipmentId" name="equipmentId" placeholder=""
+                                    class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Last Name * :</label> 
-                                <input type="text" id="lname" name="lname" placeholder="" class="form-control">
+                                <label class="form-control-label">Referencia del equipo * :</label>
+                                <input type="text" id="equipmentRef" name="equipmentRef" placeholder=""
+                                    class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Email ID * :</label>
-                                <input type="text" id="email" name="email" placeholder="" class="form-control"> 
+                                <label class="form-control-label">Identificador del monitor * :</label>
+                                <input type="text" id="monitorId" name="MonitorId" placeholder="" class="form-control">
                             </div>
                             <div class="form-group">
-                                 <label class="form-control-label">Contact No. * :</label>
-                                  <input type="text" id="mob" name="mob" placeholder="" class="form-control">
+                                <label class="form-control-label">Referencia del monitor * :</label>
+                                <input type="text" id="monitorRef" name="monitorRef" placeholder=""
+                                    class="form-control">
                             </div>
                         </div>
-                        <div class="card-body pt-0">
-                            <h4 class="heading mb-4 pb-1">Website details</h4> <label class="text-danger mb-3">* Required</label>
+                        <div class="card-body pt-0 tab">
+                            <h4 class="heading mb-4 pb-1">Especificaciones del equipo</h4>
+                            <label class="text-danger mb-3">* Required</label>
                             <div class="form-group">
-                                <label class="form-control-label">Company Name :</label>
-                                <input type="text" id="cname" name="cname" placeholder="" class="form-control">
+                                <label class="form-control-label">Procesador :</label>
+                                <input type="text" id="processor" name="processor" placeholder="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Zip Code :</label>
-                                <input type="text" id="zip" name="zip" placeholder="" class="form-control">
+                                <label class="form-control-label">Memoria instalada (RAM) :</label>
+                                <input type="text" id="memoryRam" name="memoryRam" placeholder="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Website Title * :</label>
-                                <input type="text" id="title" name="title" placeholder="" class="form-control">
+                                <label class="form-control-label">Referencia del disco duro * :</label>
+                                <input type="text" id="diskRef" name="diskRef" placeholder="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Website Description * :</label>
-                                <input type="text" id="desc" name="desc" placeholder="" class="form-control">
+                                <label class="form-control-label">Espacio total el disco duro * :</label>
+                                <input type="text" id="diskSpace" name="diskSpace" placeholder="" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label">Website Type :</label>
-                                <div class="select mb-3"> 
-                                    <select name="type-info" class="form-control">
-                                        <option>E-commerce</option>
-                                        <option>Entertainment</option>
-                                        <option>Personal</option>
-                                        <option>Business</option>
-                                        <option>Portfolio</option>
-                                        <option>Education</option>
-                                    </select> 
-                                 </div>
+                                <label class="form-control-label">¿El equipo cuenta con mouse? :</label>
+                                <div class="select mb-3">
+                                    <select name="mouse" class="form-control">
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">¿El equipo cuenta con teclado? :</label>
+                                <div class="select mb-3">
+                                    <select name="keyboard" class="form-control">
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body pt-0">
-                            <h4 class="heading mb-4 pb-1">Confirmation</h4>
+                        <div class="card-body pt-0 tab">
+                            <h4 class="heading mb-4 pb-1">Especifcaciones de programas y sistema operativo</h4>
+                            <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group">
+                                <label class="form-control-label">Sistema operativo * :</label>
+                                <input type="text" id="os" name="os" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Licencia del sistema operativo * :</label>
+                                <input type="text" id="osLicense" name="osLicense" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Versión de Office * :</label>
+                                <input type="text" id="officeVersion" name="officeVersion" placeholder=""
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Licencia de Office * :</label>
+                                <input type="text" id="officeLicense" name="officeLicense" placeholder=""
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 tab">
+                            <h4 class="heading mb-4 pb-1">Diagnóstico y estado del equipo</h4>
+                            <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group">
+                                <label class="form-control-label">Observaciones * :</label>
+                                <input type="text" id="observation" name="observation" placeholder=""
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Diagnóstico * :</label>
+                                <input type="text" id="diagnostic" name="diagnostic" placeholder=""
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Recomendaciones * :</label>
+                                <input type="text" id="recommendation" name="recommendation" placeholder=""
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Estado :</label>
+                                <div class="select mb-3">
+                                    <select name="status" class="form-control">
+                                        <option value="disponible">Disponible</option>
+                                        <option value="ocupado">Ocupado</option>
+                                        <option value="mantenimiento">Mantenimiento</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 tab">
+                            <h4 class="heading mb-4 pb-1">Completado</h4>
                             <div class="row justify-content-start px-3">
-                                <p>Form has been submitted Successfully !
-                                <br>You will recieve estimation on your email id and contact no.</p>
+                                <p>El formulario se ha registrado satisfactoriamente!
+                                    <br>You will recieve estimation on your email id and contact no.</p>
                             </div>
                             <div class="row justify-content-center">
                                 <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
                         </div>
-
-                        </form>
-                        
-                        <div class="row justify-content-center"> 
+                        <div class="row justify-content-center">
                             <button id="prevBtn" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
                                 <span class="fa fa-long-arrow-left"></span>Back
-                            </button> 
-                        <div class="input-group btn btn-blue next mx-2">
-                            <input type = "submit" id="nextBtn"  class="btn btn-blue next mx-2"  onclick="nextPrev(1)" value="Next"/>
-                                <span class="fa fa-long-arrow-right"></span>
-                        </div>
+                            </button>
+                             <button class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)">
+                                 Next<span class="fa fa-long-arrow-right"></span>
+                            </button>
 
+                            <!-- 
+                            <div class="input-group btn btn-blue next mx-2">
+                                <input id="nextBtn" type="" class="btn btn-blue next mx-2" onclick="nextPrev(1)" value="Next" />
+                                <span class="fa fa-long-arrow-right"></span>
+                            </div>
+                            -->
                         </div>
-                    </div>
+                    </form>   
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 <script src="assets/js/form2.js"></script>
 
-<script src="assets/js/form.js"></script>
 {{>footerdashboard}}
