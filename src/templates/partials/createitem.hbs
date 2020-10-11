@@ -1,100 +1,159 @@
+{{>headdashboard}}
+<link href="assets/css/multi-step-form.css" rel="stylesheet">
 
-    <form action="/createproduct" enctype="multipart/form-data" method="POST">
-        <div class="form-body">
-            <h5 class="card-title">Información del articulo</h5>
-            <hr>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Identificador del equipo</label>
-                            <input type="text" id="idEquipment" name="idEquipment" class="form-control"  placeholder="Ingrese el código del equipo" required> 
-                        </div>                                               
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Identificador del monitors</label>
-                            <input type="text" id="idMonitor" name="idMonitor" class="form-control"  placeholder="Ingrese el código de la pantalla" required> 
-                        </div>                                               
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group" ><i class="was-validated"></i>
-                            <label class="control-label">Categoría</label>
-                            <div class="input-group">
-                                <select class="custom-select" name="categoria" placeholder="Escoge una Categoria" required>                    
-                                    <option value="">Elige la categoria del producto</option>
-                                    <option value="">Equipo de escritorio</option>
-                                    <option value="">Portatil</option>
-                                    <option value="">Tablet</option>
-                                </select>
-                                <div class="invalid-feedback">Por favor seleccione una Categoria</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group" ><i class="was-validated"></i>
-                            <label class="control-label">Categoria</label>
-                            <div class="input-group">
-                                <select class="custom-select" name="categoria" placeholder="Escoge una Categoria" required>                    
-                                    <option value="">Elige la categoria del producto</option>
-                                    <option value="Tecnologia">Tecnologia</option>
-                                    <option value="Mercado">Mercado</option>
-                                    <option value="Electrodomesticos">Electrodomesticos</option>
-                                </select>
-                                <div class="invalid-feedback">Por favor seleccione una Categoria</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="control-label">Precio</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="precio" placeholder="Ingrese el precio" aria-label="precio" aria-describedby="basic-addon1" required>                                                                                            
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="control-label">Precio</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="precio" placeholder="Ingrese el precio" aria-label="precio" aria-describedby="basic-addon1" required>                                                                                            
-                        </div>
-                    </div>
-                </div>
-                <h5 class="card-title m-t-40">Descripción del Producto</h5>
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <div class="form-group">
-                            <textarea class="form-control" name="descripcion" rows="4" placeholder="Ingrese una descripción"></textarea>                                                
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5 class="card-title m-t-20">Imagen del Producto</h5>
-                        <div class="el-element-overlay">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> 
-                                    <img class="image-product" src="../../assets/images/gallery/product_default.png" alt="user"/>
+    <div class="form-body">
+        <div class="container-fluid px-1 py-5 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-9 col-lg-10 col-md-11">
+                    <div class="card rounded-0 b-0">
+
+
+
+                        <div class="card-header">
+                            <div class="row d-flex justify-content-between">
+                                <div class="">
+                                    <h5 class="yellow-text">Tell Us Little More About Your Requirement?</h5>
+                                    <h6>Simply Follow Through</h6>
+                                </div>
+                                <div class="text-md-center">
+                                    <h5 class="yellow-text">Call us</h5>
+                                    <h5><span class="fa fa-phone pr-3"></span>123 456 7891</h5>
                                 </div>
                             </div>
                         </div>
-                        <br>    
-
-                        <div class="input-group mb-3">
-                            <div class="btn btn-info waves-effect waves-light"><span>Cargar otra imagen</span>
-                                <input type="file" name="imagenProducto" accept="image/*" class="upload" required>
+                        <div class="row d-flex justify-content-sm-end justify-content-start px-5">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-sm-end justify-content-start px-5">
+                            <div class="count text-center">
+                                <p class="mb-sm-0 pb-sm-0"><strong><span id="cnt">25</span>%</strong> <span
+                                        class="yellow-text">Completed</span></p>
+                            </div> 
+                        </div>
+                        <form id="regForm" method="POST" action="/dashboardadmin"></form>
+                        <div class="card-body show pt-0">
+                            <h4 class="heading mb-4 pb-1">What should be done?</h4>
+                            <div class="radio-group row justify-content-between px-3">
+                                <input type="text" style="display: none;" placeholder="" class="form-control" value="algo">
+                                <div class="card-block radio selected">
+                                    <div class="row justify-content-end d-flex px-3">
+                                        <div class="fa fa-check"></div>
+                                    </div>
+                                    <div class="row justify-content-center d-flex">
+                                        <div class="pic"> <img src="https://i.imgur.com/4uBi6ib.png" class="pic-0">
+                                        </div>
+                                        <h5 class="mb-4">Create Website</h5>
+                                    </div>
+                                </div>
+                                <div class="card-block radio">
+                                    <div class="row justify-content-end d-flex px-3">
+                                        <div class="fa fa-circle"></div>
+                                    </div>
+                                    <div class="row justify-content-center d-flex">
+                                        <div class="pic"> <img src="https://i.imgur.com/nwy6Wkh.png" class="pic-0">
+                                        </div>
+                                        <h5 class="mb-4">Website Relaunch</h5>
+                                    </div>
+                                </div>
+                                <div class="card-block radio">
+                                    <div class="row justify-content-end d-flex px-3">
+                                        <div class="fa fa-circle"></div>
+                                    </div>
+                                    <div class="row justify-content-center d-flex">
+                                        <div class="pic"> <img src="https://i.imgur.com/74Ez7OS.png" class="pic-0">
+                                        </div>
+                                        <h5 class="mb-4">Don't Know</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
+                        
+                        <div class="card-body pt-0">
+                            <h4 class="heading mb-4 pb-1">Personal details</h4> <label class="text-danger mb-3">*
+                                Required</label>
+                            <div class="form-group"> 
+                                <label class="form-control-label">First Name * :</label> 
+                                <input type="text" id="fname" name="fname" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Last Name * :</label> 
+                                <input type="text" id="lname" name="lname" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Email ID * :</label>
+                                <input type="text" id="email" name="email" placeholder="" class="form-control"> 
+                            </div>
+                            <div class="form-group">
+                                 <label class="form-control-label">Contact No. * :</label>
+                                  <input type="text" id="mob" name="mob" placeholder="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <h4 class="heading mb-4 pb-1">Website details</h4> <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group">
+                                <label class="form-control-label">Company Name :</label>
+                                <input type="text" id="cname" name="cname" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Zip Code :</label>
+                                <input type="text" id="zip" name="zip" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Website Title * :</label>
+                                <input type="text" id="title" name="title" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Website Description * :</label>
+                                <input type="text" id="desc" name="desc" placeholder="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Website Type :</label>
+                                <div class="select mb-3"> 
+                                    <select name="type-info" class="form-control">
+                                        <option>E-commerce</option>
+                                        <option>Entertainment</option>
+                                        <option>Personal</option>
+                                        <option>Business</option>
+                                        <option>Portfolio</option>
+                                        <option>Education</option>
+                                    </select> 
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <h4 class="heading mb-4 pb-1">Confirmation</h4>
+                            <div class="row justify-content-start px-3">
+                                <p>Form has been submitted Successfully !
+                                <br>You will recieve estimation on your email id and contact no.</p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
+                        </div>
+
+                        </form>
+                        
+                        <div class="row justify-content-center"> 
+                            <button id="prevBtn" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
+                                <span class="fa fa-long-arrow-left"></span>Back
+                            </button> 
+                        <div class="input-group btn btn-blue next mx-2">
+                            <input type = "submit" id="nextBtn"  class="btn btn-blue next mx-2"  onclick="nextPrev(1)" value="Next"/>
+                                <span class="fa fa-long-arrow-right"></span>
+                        </div>
+
+                        </div>
                     </div>
                 </div>
-            <hr>
+            </div>
         </div>
-        <div class="form-actions m-t-40">
-            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar </button>
+    </div>
 
-        </div>
-    </form>
-               
+
+<script src="assets/js/form2.js"></script>
+
+<script src="assets/js/form.js"></script>
+{{>footerdashboard}}

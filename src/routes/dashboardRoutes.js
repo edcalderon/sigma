@@ -252,7 +252,7 @@ app.get('/dashboardadmin', (req, res) =>{
 			cantidadCursosDisponibles: req.session.cursosDisponibles,
 			cursosCerrados: req.session.cursosCerrados,
 			ganancia: req.session.ganancia,
-			coordinador: req.session.coordinador
+			coordinador: req.session.coordinador,
 		})
 	})
 });
@@ -391,9 +391,13 @@ app.get('/custompage', (req, res) =>{
 
 app.get('/createitem', (req, res) =>{
 	res.render('dashboardadmin',{
-		createItem:true
+		createItem : true
 	})
 });
+
+app.post('/createitem'), (req, res) => {
+	res.render('dashboardadmin')
+}
 
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardupdateuser')
