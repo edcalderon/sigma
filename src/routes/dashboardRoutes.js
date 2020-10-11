@@ -14,7 +14,6 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(APIKEY);
 //var $ = require("jquery");
 
-
 // Models mongodb
 const User = require('../models/user');
 const Course = require('../models/course');
@@ -29,7 +28,6 @@ const directorio_views = path.join(__dirname, './../templates/views');
 hbs.registerPartials(directorio_partials);
 app.set('views',directorio_views);
 app.set('view engine', 'hbs');//Le configuramos el motor de templates o de vistas
-
 
 app.get('/dashboarduser', (req, res) => {
 	//lista de cursos inscritos

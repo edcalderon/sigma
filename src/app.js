@@ -10,7 +10,6 @@ const session = require('express-session');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-
 // Models mongodb 
 const User = require('./models/user');
 const { Usuarios } = require('./models/usuarioschat');

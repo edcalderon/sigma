@@ -1,5 +1,5 @@
-{{>headdashboard}}
 <link href="assets/css/multi-step-form.css" rel="stylesheet">
+<script src="assets/js/form2.js"></script>
 <div class="form-body">
     <div class="container-fluid px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
@@ -190,19 +190,12 @@
                                 <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button id="prevBtn" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
+                            <button type="button" id="prevBtn" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
                                 <span class="fa fa-long-arrow-left"></span>Back
                             </button>
-                             <button class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)">
+                             <button type="button" class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)">
                                  Next<span class="fa fa-long-arrow-right"></span>
                             </button>
-
-                            <!-- 
-                            <div class="input-group btn btn-blue next mx-2">
-                                <input id="nextBtn" type="" class="btn btn-blue next mx-2" onclick="nextPrev(1)" value="Next" />
-                                <span class="fa fa-long-arrow-right"></span>
-                            </div>
-                            -->
                         </div>
                     </form>   
                 </div>
@@ -211,7 +204,3 @@
     </div>
 </div>
 
-
-<script src="assets/js/form2.js"></script>
-
-{{>footerdashboard}}
