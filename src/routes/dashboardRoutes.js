@@ -250,7 +250,7 @@ app.get('/dashboardadmin', (req, res) =>{
 			cantidadCursosDisponibles: req.session.cursosDisponibles,
 			cursosCerrados: req.session.cursosCerrados,
 			ganancia: req.session.ganancia,
-			coordinador: req.session.coordinador,
+			coordinador: req.session.coordinador
 		})
 	})
 });
