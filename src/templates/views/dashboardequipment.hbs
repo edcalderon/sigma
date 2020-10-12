@@ -1,0 +1,188 @@
+{{>headdashboard}}
+<body id="page-top">
+  <div id="wrapper">
+    {{>sidebardashboard}}
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        {{>topbar}}
+        <div class="container-fluid">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"></h1>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-lg-7 ">
+              <div class="card text-center">
+                <div class="card-body">
+                  <div class="container">
+                    <h1></h1>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <div class="text-center">
+                          {{#if avatar}}
+                          <img src="data:img/jpeg;base64,{{avatar}}" class="img-profile rounded-circle" alt="avatar"
+                            height="200" width="200">
+                          {{else}}
+                          <img src="https://cdn.onlinewebfonts.com/svg/thumbnails_60_462217.png"
+                            class="img-profile rounded-circle" alt="avatar">
+                          {{/if}}
+                          <h6>Sube una foto de perfil diferente...</h6>
+                          <form id="uploadProfilePicForm" enctype="multipart/form-data" action="/dashboardprofile"
+                            method="post">
+                            <input type="file" class="form-control" id="userPhotoInput" name="userPhoto"
+                              accept="image/*">
+                            <input type="submit" name="submit" value="Subir">
+                            <input type="hidden" name="avatar" value="avatar">
+                          </form>
+                        </div>
+                      </div>
+                      <!-- edit form column -->
+
+                      <div class="col-md-5 personal-info">
+                        {{#if resultshow}}
+                        <div class="alert alert-info alert-dismissable">
+                          <a class="panel-close close" data-dismiss="alert">×</a>
+                          <i class="fa fa-coffee"></i>
+                          <strong>{{resultshow}}</strong>.
+                        </div>
+                        {{/if}}
+                        <h3></h3>
+                        <form class="form-horizontal" action="/dashboardprofile" method="post">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">ID:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="firstname"
+                                  value={{equipmentId}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">categoria:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="lastname"
+                                  value={{category}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">monitorId:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="cc" value={{monitorId}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">equipmentRef:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="email" value={{equipmentRef}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">monitorRef:</label>
+                            <div class="col-md-8">
+                              <span><input class="form-control" type="text" name="phone" value={{monitorRef}}> </span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">memoryRam:</label>
+                            <div class="col-md-8">
+                              <span><input class="form-control" type="text" name="inputPassword" value={{memoryRam}}></span><br>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md-5 personal-info">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">diskRef:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="firstname"
+                                  value={{diskRef}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">diskSpace:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="lastname"
+                                  value={{diskSpace}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">processor:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="cc" value={{processor}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">mouse:</label>
+                            <div class="col-lg-8">
+                              <span><input class="form-control" type="text" name="email" value={{mouse}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">keyboard:</label>
+                            <div class="col-md-8">
+                              <span><input class="form-control" type="text" name="phone" value={{keyboard}}> </span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">OS:</label>
+                            <div class="col-md-8">
+                              <span><input class="form-control" type="text" name="inputPassword" value={{OS}}></span><br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                              <span>
+                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                                <input type="reset" class="btn btn-default" value="Cancel">
+                                <input type="hidden" name="infoprofile" value="infoprofile">
+                              </span>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Content Row -->
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4"> </div>
+            <div class="col-lg-6 mb-4"> </div>
+          </div>
+          <!-- end Content Row -->
+        </div>
+        <!-- end container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+      {{>footerdashboard}}
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
+  <!-- Footer -->
+
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseas salir ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecciona "Salir" para terminar la sesion actual.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="/">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
