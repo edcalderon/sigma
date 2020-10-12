@@ -12479,9 +12479,14 @@ border-radius: 50%;
   text-align: center;
   padding: 5px 5px 5px ;
   font-size: 30px;
+  display: flex;
+  flex-wrap: wrap; 
 }
 /* equipments card */
-
+.grid-item {
+  display: flex;
+  flex-wrap: wrap; 
+}
 .cardEquipment {
   width: 400px;
   border: none;

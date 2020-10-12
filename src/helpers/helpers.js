@@ -10,9 +10,9 @@ listaActualizaUsuarios = [];
 hbs.registerHelper('showEquipments', (equipmentsList) => {
 	let texto = "";
 	equipmentsList.forEach ( item => { 
-		texto = texto + `<div class="grid-item"> 
-							<div class="container mt-5 d-flex justify-content-center">
-								<div class="cardEquipment p-3">
+		texto = texto + `<div class="grid-item d-flex"> 
+							<div class="container mt-5 justify-content-center flex-column">
+								<div class="cardEquipment p-3 d-flex flex-column">
 									<div class="d-flex align-items-center">
 										<div class="image"> <img class="rounded" width="155" src="assets/img/computer.svg.png"/>  </div>
 										<div class="ml-3 w-100">
