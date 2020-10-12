@@ -29,7 +29,17 @@ hbs.registerPartials(directorio_partials);
 app.set('views',directorio_views);
 app.set('view engine', 'hbs');//Le configuramos el motor de templates o de vistas
 
-app.get('/dashboarduser', (req, res) => {
+// Session
+app.use(session({
+	secret: "keyboard cat",
+	resave: true,
+	saveUninitialized: true,
+	cookie: {
+		maxAge: 24 * 60 * 60 * 365 * 1000
+	}
+}))
+
+app.get('/dashboarduser', (req, res) =>{
 	//lista de cursos inscritos
 	Course.find({students: { $elemMatch: {cedula:req.session.cc,nombre:req.session.firstname}}},(err,result)=>{
 		if (err){
@@ -395,14 +405,18 @@ app.get('/custompage', (req, res) =>{
 })
 
 app.get('/createitem', (req, res) =>{
-	res.render('dashboardadmin',{
-		createItem : true
+	console.log(req.session.coordinador)
+	console.log(req.session.user)
+	res.render('dashboardcreateitem',{
+		coordinador: req.session.coordinador,
 	})
 });
 
-app.post('/createitem'), (req, res) => {
-	res.render('dashboardadmin')
-}
+app.post('/createitem', (req, res) =>{
+	res.render('dashboardcreateitem',{
+		coordinador: req.session.coordinador,
+	})
+});
 
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardupdateuser')

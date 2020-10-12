@@ -114,6 +114,7 @@ app.use((req,res,next) => {
     res.locals.valorCursosInscritos = req.session.valorCursosInscritos
     res.locals.ganancia = req.session.ganancia
     res.locals.datos = req.session.datos
+    res.locals.coordinador = req.session.coordinador
     //vars modify user by admin
     if(req.session.modificar){
       res.locals.cursosUser = req.session.cursosUser
