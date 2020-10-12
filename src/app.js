@@ -115,6 +115,31 @@ app.use((req,res,next) => {
     res.locals.ganancia = req.session.ganancia
     res.locals.datos = req.session.datos
     res.locals.coordinador = req.session.coordinador
+
+
+    res.locals.category = req.session.category = "portatil",
+    res.locals.status =  req.session.status,
+    res.locals.equipmentId =  req.session.equipmentId,
+    res.locals.monitorId =  req.session.monitorId,
+    res.locals.equipmentRef =  req.session.equipmentRef,
+    res.locals.monitorRef =  req.session.monitorRef,
+    res.locals.memoryRam =  req.session.memoryRam,
+    res.locals.diskRef =  req.session.diskRef,
+    res.locals.diskSpace =  req.session.diskSpace,
+    res.locals.processor = req.session.processor,
+    res.locals.mouse = req.session.mouse,
+    res.locals.keyboard = req.session.keyboard,
+    res.locals.os = req.session.os,
+    res.locals.licenseOS =  req.session.osLicense,
+    res.locals.officeVersion = req.session.officeVersion,
+    res.locals.officeLicense = req.session.officeLicense,
+    res.locals.observation = req.session.observation,
+    res.locals.diagnostic = req.session.diagnostic,
+    res.locals.recommendation = req.session.recommendation
+
+
+
+
     //vars modify user by admin
     if(req.session.modificar){
       res.locals.cursosUser = req.session.cursosUser

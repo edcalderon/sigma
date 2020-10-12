@@ -342,7 +342,7 @@ app.post('/dashboardadmin', (req, res) =>{
 
 			User.findOne({_id: req.body.modificar},(err,result)=>{
 				if (err){
-		 			return console.log(err)
+					 return console.log(err)
 		 		}
 				var obj = result.toObject()
 				console.log(obj)
@@ -388,38 +388,80 @@ app.get('/createitem', (req, res) =>{
 	})
 });*/
 
-app.post('/dashboardcreateitem', (req, res) =>{
-	let equipment = new Equipment ({
+app.post('/dashboardcreateitem', (req, res) => {
+	let equipment = new Equipment({
 		category: "portatil",
-		status:"disponible",
+		status: req.body.status,
 		equipmentId: req.body.equipmentId,
 		monitorId: req.body.monitorId,
 		equipmentRef: req.body.equipmentRef,
 		monitorRef: req.body.monitorRef,
-		memoryRam:  req.body.memoryRam,
-		diskRef:  req.body.diskRef,
-		diskSpace:  req.body.diskSpace,
+		memoryRam: req.body.memoryRam,
+		diskRef: req.body.diskRef,
+		diskSpace: req.body.diskSpace,
 		processor: req.body.processor,
-		mouse:  req.body.mouse,
-		keyboard:  req.body.keyboard,
-		OS:  req.body.os,
-		licenseOS:  req.body.osLicense,
-		officeVersion:  req.body.officeVersion,
-		officeLicense:  req.body.officeLicense,
-		observation:  req.body.observation,
-		diagnostic:  req.body.diagnostic,
-		recommendation:  req.body.recommendation
+		mouse: req.body.mouse,
+		keyboard: req.body.keyboard,
+		OS: req.body.os,
+		licenseOS: req.body.osLicense,
+		officeVersion: req.body.officeVersion,
+		officeLicense: req.body.officeLicense,
+		observation: req.body.observation,
+		diagnostic: req.body.diagnostic,
+		recommendation: req.body.recommendation
 	});
 	console.log(equipment)
-		equipment.save((err,result) =>{
-			if(err){
-				console.log(err);
-           		return;
-			} else {
-				res.render('dashboardcreateitem');
-				console.log("¡Se registro el equipo!")
-				console.log(result)
-			}
+	equipment.save((err, result) => {
+		if (err) {
+			req.session.category = "portatil";
+			req.session.status = req.body.status;
+			req.session.equipmentId = req.body.equipmentId;
+			req.session.monitorId = req.body.monitorId;
+			req.session.equipmentRef = req.body.equipmentRef;
+			req.session.monitorRef = req.body.monitorRef;
+			req.session.memoryRam = req.body.memoryRam;
+			req.session.diskRef = req.body.diskRef;
+			req.session.diskSpace = req.body.diskSpace;
+			req.session.processor = req.body.processor;
+			req.session.mouse = req.body.mouse;
+			req.session.keyboard = req.body.keyboard;
+			req.session.os = req.body.os;
+			req.session.licenseOS = req.body.osLicense;
+			req.session.officeVersion = req.body.officeVersion;
+			req.session.officeLicense = req.body.officeLicense;
+			req.session.observation = req.body.observation;
+			req.session.diagnostic = req.body.diagnostic;
+			req.session.recommendation = req.body.recommendation;
+
+			res.render('dashboardcreateitem', {
+				error: 'Error al ingresar el identificador del equipo o del monitor',
+				category: "portatil",
+				status: req.session.status,
+				equipmentId: req.session.equipmentId,
+				monitorId: req.session.monitorId,
+				equipmentRef: req.session.equipmentRef,
+				monitorRef: req.session.monitorRef,
+				memoryRam: req.session.memoryRam,
+				diskRef: req.session.diskRef,
+				diskSpace: req.session.diskSpace,
+				processor: req.session.processor,
+				mouse: req.session.mouse,
+				keyboard: req.session.keyboard,
+				OS: req.session.os,
+				licenseOS: req.session.osLicense,
+				officeVersion: req.session.officeVersion,
+				officeLicense: req.session.officeLicense,
+				observation: req.session.observation,
+				diagnostic: req.session.diagnostic,
+				recommendation: req.session.recommendation
+			});
+			console.log(err);
+			return;
+		} else {
+			res.render('dashboardcreateitem');
+			console.log("¡Se registro el equipo!")
+			console.log(result)
+		}
 	});
 })
 

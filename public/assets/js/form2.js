@@ -8,6 +8,7 @@ function showTab(n) {
   //... and fix the Previous/Next buttons:
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("backBtn").style.display = "none";
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
@@ -15,29 +16,31 @@ function showTab(n) {
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("prevBtn").style.display = "none";
     document.getElementById("regForm").submit();
+
+    document.getElementById("backBtn").style.display = "inline";
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   //... and run a function that will display the correct step indicator:
- // fixStepIndicator(n)
+  fixStepIndicator(n)
 
 }
 
 function nextPrev(n) {
-    // This function will figure out which tab to display
-    var x = document.getElementsByClassName("tab");
-    // Exit the function if any field in the current tab is invalid:
-    if (n == 1 && !validateForm()) return false;
-    // Hide the current tab:
-    x[currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
-    currentTab = currentTab + n;
-    // if you have reached the end of the form...192
-    if (currentTab >= x.length) {
-      return false; 
-    }
-    // Otherwise, display the correct tab:
-    showTab(currentTab);
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...192
+  if (currentTab >= x.length) {
+    return false; 
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
 }
 
 function validateForm() {
@@ -62,10 +65,6 @@ function validateForm() {
   return valid; // return the valid status
 }
 
-function validateRadios(){
-    
-}
-
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
@@ -76,6 +75,16 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 
+function returnBack(){
+  x = document.getElementsByClassName("tab");
+  x[currentTab].style.display = "none";
+  currentTab = 0;
+  x[currentTab].style.display = "block";
+  showTab(currentTab);
+  nextPrev(-1);
+  return currentTab;
+}
+
 $(document).ready(function(){  
     $('.radio-group .radio').click(function(){
         $('.selected .fa').removeClass('fa-check');
@@ -84,5 +93,11 @@ $(document).ready(function(){
         $(this).addClass('selected');
         $('.selected .fa').removeClass('fa-circle');
         $('.selected .fa').addClass('fa-check');
-        });
+    });
+
+    $("#backBtn").on("click", function(){
+      $("#regForm").trigger('reset');
+    });
+
+      
 });

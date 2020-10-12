@@ -6,8 +6,26 @@
         <div class="row d-flex justify-content-center">
             <div class="col-xl-9 col-lg-10 col-md-11">
                 <div class="card rounded-0 b-0">
+                    <div class="card-header">
+                        <div class="row d-flex justify-content-between">
+                            <div class="">                             
+                            </div>
+                            <div class="text-md-center">
+                            </div>
+                        </div>
+                    </div>
                     <form id="regForm" method="POST" action="/dashboardcreateitem">
                         <div class="card-body show pt-0 tab">
+
+                            {{#if error}}
+                                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {{/if}}
+
                             <input type="text" style="display: none" class="form-control" value="algo">
                             <h4 class="heading mb-4 pb-1">What should be done?</h4>
                             <div class="radio-group row justify-content-between px-3">
@@ -49,20 +67,19 @@
                             <label class="text-danger mb-3">* Required</label>
                             <div class="form-group">
                                 <label class="form-control-label">Identificador del equipo * :</label>
-                                <input type="text" id="equipmentId" name="equipmentId" placeholder="" class="form-control">
+                                <input type="text" id="equipmentId" name="equipmentId" placeholder="" class="form-control"  value={{equipmentId}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Referencia del equipo * :</label>
-                                <input type="text" id="equipmentRef" name="equipmentRef" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="equipmentRef" name="equipmentRef" placeholder="" class="form-control" value={{equipmentRef}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Identificador del monitor * :</label>
-                                <input type="text" id="monitorId" name="monitorId" placeholder="" class="form-control">
+                                <input type="text" id="monitorId" name="monitorId" placeholder="" class="form-control" value={{monitorId}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Referencia del monitor * :</label>
-                                <input type="text" id="monitorRef" name="monitorRef" placeholder="" class="form-control">
+                                <input type="text" id="monitorRef" name="monitorRef" placeholder="" class="form-control" value={{monitorRef}}>
                             </div>
                         </div>
                         <div class="card-body pt-0 tab">
@@ -70,24 +87,24 @@
                             <label class="text-danger mb-3">* Required</label>
                             <div class="form-group">
                                 <label class="form-control-label">Procesador :</label>
-                                <input type="text" id="processor" name="processor" placeholder="" class="form-control">
+                                <input type="text" id="processor" name="processor" placeholder="" class="form-control" value={{processor}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Memoria instalada (RAM) :</label>
-                                <input type="text" id="memoryRam" name="memoryRam" placeholder="" class="form-control">
+                                <input type="text" id="memoryRam" name="memoryRam" placeholder="" class="form-control" value={{memoryRam}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Referencia del disco duro * :</label>
-                                <input type="text" id="diskRef" name="diskRef" placeholder="" class="form-control">
+                                <input type="text" id="diskRef" name="diskRef" placeholder="" class="form-control" value={{diskRef}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Espacio total el disco duro * :</label>
-                                <input type="text" id="diskSpace" name="diskSpace" placeholder="" class="form-control">
+                                <input type="text" id="diskSpace" name="diskSpace" placeholder="" class="form-control" value={{diskSpace}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">¿El equipo cuenta con mouse? :</label>
                                 <div class="select mb-3">
-                                    <select name="mouse" class="form-control">
+                                    <select name="mouse" class="form-control" value={{mouse}}>
                                         <option value="si">Sí</option>
                                         <option value="no">No</option>
                                     </select>
@@ -96,7 +113,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">¿El equipo cuenta con teclado? :</label>
                                 <div class="select mb-3">
-                                    <select name="keyboard" class="form-control">
+                                    <select name="keyboard" class="form-control" value={{keyboard}}>
                                         <option value="si">Sí</option>
                                         <option value="no">No</option>
                                     </select>
@@ -108,21 +125,19 @@
                             <label class="text-danger mb-3">* Required</label>
                             <div class="form-group">
                                 <label class="form-control-label">Sistema operativo * :</label>
-                                <input type="text" id="os" name="os" placeholder="" class="form-control">
+                                <input type="text" id="os" name="os" placeholder="" class="form-control" value={{OS}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Licencia del sistema operativo * :</label>
-                                <input type="text" id="osLicense" name="osLicense" placeholder="" class="form-control">
+                                <input type="text" id="osLicense" name="osLicense" placeholder="" class="form-control" value={{licenseOS}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Versión de Office * :</label>
-                                <input type="text" id="officeVersion" name="officeVersion" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="officeVersion" name="officeVersion" placeholder="" class="form-control" value={{officeVersion}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Licencia de Office * :</label>
-                                <input type="text" id="officeLicense" name="officeLicense" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="officeLicense" name="officeLicense" placeholder="" class="form-control" value={{officeLicense}}>
                             </div>
                         </div>
                         <div class="card-body pt-0 tab">
@@ -130,23 +145,20 @@
                             <label class="text-danger mb-3">* Required</label>
                             <div class="form-group">
                                 <label class="form-control-label">Observaciones * :</label>
-                                <input type="text" id="observation" name="observation" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="observation" name="observation" placeholder="" class="form-control" value={{observation}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Diagnóstico * :</label>
-                                <input type="text" id="diagnostic" name="diagnostic" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="diagnostic" name="diagnostic" placeholder="" class="form-control" value={{diagnostic}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Recomendaciones * :</label>
-                                <input type="text" id="recommendation" name="recommendation" placeholder=""
-                                    class="form-control">
+                                <input type="text" id="recommendation" name="recommendation" placeholder="" class="form-control" value={{recommendation}}>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Estado :</label>
                                 <div class="select mb-3">
-                                    <select name="status" class="form-control">
+                                    <select name="status" class="form-control" value={{status}}>
                                         <option value="disponible">Disponible</option>
                                         <option value="ocupado">Ocupado</option>
                                         <option value="mantenimiento">Mantenimiento</option>
@@ -154,22 +166,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-0 tab">
-                            <h4 class="heading mb-4 pb-1">Completado</h4>
-                            <div class="row justify-content-start px-3">
-                                <p>El formulario se ha registrado satisfactoriamente!
-                                    <br>You will recieve estimation on your email id and contact no.</p>
+                         {{#unless error}}
+                            <div class="card-body pt-0 tab">
+                                <h4 class="heading mb-4 pb-1">Completado</h4>
+                                <div class="row justify-content-start px-3">
+                                    <p>El formulario se ha registrado satisfactoriamente!
+                                        <br>You will recieve estimation on your email id and contact no.</p>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
-                        </div>
+                        {{/unless}}
                         <div class="row justify-content-center">
-                            <button type="button" id="prevBtn" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
+                            <button type="button" id="prevBtn" style="display: none" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
                                 <span class="fa fa-long-arrow-left"></span>Back
                             </button>
                              <button type="button" class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)">
                                  Next<span class="fa fa-long-arrow-right"></span>
                             </button>
+                            <button type="reset" id="backBtn" style="display: none" class="btn btn-secondary prev mx-2">
+                                <span class="fa fa-long-arrow-left"></span>Return
+                            </button>
+                        </div>
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
                         </div>
                     </form>   
                 </div>
@@ -177,4 +202,10 @@
         </div>
     </div>
 </div>
+
+<script>
+     $('#backBtn').click(function(){
+            $('#regForm')[0].reset();
+ });
+</script>
 
