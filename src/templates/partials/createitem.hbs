@@ -14,23 +14,34 @@
                             </div>
                         </div>
                     </div>
-                    <form id="regForm" method="POST" action="/dashboardcreateitem">
+                    <form id="regForm" method="POST" action="/dashboardcreateitem" onsubmit="return false">
                         <div class="card-body show pt-0 tab">
-
-                            {{#if error}}
-                                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert">
-                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                             {{#if message}}
+                                <div class="alert alert-success alert-dismissible fade show d-flex flex-row bd-highlight mb-3 mt-3" role="alert">
+                                    <div class="p-2 flex-fill bd-highlight">
+                                        <img src="https://i.imgur.com/krsWHvd.gif" class="check"> 
+                                    </div>
+                                    <div class="pl-2 flex-fill bd-highlight">
+                                        <p><strong>Confirmado!</strong> El equipo se registró correctamente.</p>
+                                    </div>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             {{/if}}
-
+                            {{#if error}}
+                                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert">
+                                    <strong>¡Error!</strong> El identificador de equipo o monitor ya existe.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {{/if}}
                             <input type="text" style="display: none" class="form-control" value="algo">
                             <h4 class="heading mb-4 pb-1">What should be done?</h4>
                             <div class="radio-group row justify-content-between px-3">
                                 <input type="text" style="display: none;" placeholder="" class="form-control" value="algo">
-                                <div class="card-block radio selected">
+                                <div class="card-block radio selected computer">
                                     <div class="row justify-content-end d-flex px-3">
                                         <div class="fa fa-check"></div>
                                     </div>
@@ -40,7 +51,7 @@
                                         <h5 class="mb-4">Create Website</h5>
                                     </div>
                                 </div>
-                                <div class="card-block radio">
+                                <div class="card-block radio portatil">
                                     <div class="row justify-content-end d-flex px-3">
                                         <div class="fa fa-circle"></div>
                                     </div>
@@ -50,7 +61,7 @@
                                         <h5 class="mb-4">Website Relaunch</h5>
                                     </div>
                                 </div>
-                                <div class="card-block radio">
+                                <div class="card-block radio tablet">
                                     <div class="row justify-content-end d-flex px-3">
                                         <div class="fa fa-circle"></div>
                                     </div>
@@ -166,22 +177,11 @@
                                 </div>
                             </div>
                         </div>
-                         {{#unless error}}
-                            <div class="card-body pt-0 tab">
-                                <h4 class="heading mb-4 pb-1">Completado</h4>
-                                <div class="row justify-content-start px-3">
-                                    <p>El formulario se ha registrado satisfactoriamente!
-                                        <br>You will recieve estimation on your email id and contact no.</p>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <img src="https://i.imgur.com/krsWHvd.gif" class="check"> </div>
-                            </div>
-                        {{/unless}}
                         <div class="row justify-content-center">
                             <button type="button" id="prevBtn" style="display: none" class="btn btn-secondary prev mx-2" onclick="nextPrev(-1)">
                                 <span class="fa fa-long-arrow-left"></span>Back
                             </button>
-                             <button type="button" class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)">
+                             <button type="button" class="btn btn-blue next mx-2" id="nextBtn" onclick="nextPrev(1)" onkeydown="">
                                  Next<span class="fa fa-long-arrow-right"></span>
                             </button>
                             <button type="reset" id="backBtn" style="display: none" class="btn btn-secondary prev mx-2">
@@ -189,7 +189,6 @@
                             </button>
                         </div>
                         <div style="text-align:center;margin-top:40px;">
-                            <span class="step"></span>
                             <span class="step"></span>
                             <span class="step"></span>
                             <span class="step"></span>
@@ -203,9 +202,4 @@
     </div>
 </div>
 
-<script>
-     $('#backBtn').click(function(){
-            $('#regForm')[0].reset();
- });
-</script>
 

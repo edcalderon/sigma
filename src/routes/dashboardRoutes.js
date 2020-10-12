@@ -364,7 +364,7 @@ app.post('/dashboardcreateitem', (req, res) => {
 			req.session.recommendation = req.body.recommendation;
 
 			res.render('dashboardcreateitem', {
-				error: 'Error al ingresar el identificador del equipo o del monitor',
+				error: "Un error",
 				category: "portatil",
 				status: req.session.status,
 				equipmentId: req.session.equipmentId,
@@ -388,7 +388,9 @@ app.post('/dashboardcreateitem', (req, res) => {
 			console.log(err);
 			return;
 		} else {
-			res.render('dashboardcreateitem');
+			res.render('dashboardcreateitem',{
+				message : 'un mensaje'
+			});
 			console.log("¡Se registro el equipo!")
 			console.log(result)
 		}

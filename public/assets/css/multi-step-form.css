@@ -89,7 +89,7 @@ body {
     color: #FBC02D;
     border-radius: 50%;
     border: 2px solid #FBC02D;
-    padding: 5px
+    padding: 5px;
 }
 
 .fa-circle {
@@ -190,4 +190,9 @@ button:focus {
   
   .step.finish {
     background-color: #4CAF50;
+  }
+
+  .check {
+    width: 25%;
+    height: auto;
   }

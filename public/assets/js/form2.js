@@ -15,11 +15,19 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("prevBtn").style.display = "none";
-    document.getElementById("regForm").submit();
-
+    //document.getElementById("regForm").submit();
     document.getElementById("backBtn").style.display = "inline";
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  if(n == (x.length - 2)){
+    document.getElementById("nextBtn").innerHTML = "Registrar";
+    submitBtn = document.getElementById("nextBtn");
+    submitBtn.onclick = function(){
+      document.getElementById("regForm").submit();
+      return false;
+    }
+
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
@@ -97,7 +105,9 @@ $(document).ready(function(){
 
     $("#backBtn").on("click", function(){
       $("#regForm").trigger('reset');
-    });
+    });      
+});
 
-      
+$(document).on("keydown", "input", function(e) {
+  if (e.which==13) e.preventDefault();
 });
