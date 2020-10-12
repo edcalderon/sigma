@@ -7,11 +7,28 @@ const Course = require('./../models/course');
 listaInscritos = [];
 listaActualizaUsuarios = [];
 
-hbs.registerHelper('equipments', (listado) => {
+hbs.registerHelper('showEquipments', (equipmentsList) => {
 	let texto = "";
-	listado = [1,2,3,4,5,6,7,8,9]
-	listado.forEach ( item => { 
-		texto = texto + ` <div class="grid-item"> <img style="border-radius:0px; max-width:60px;" src="assets/img/computer.svg.png"/> </div> `;
+	equipmentsList.forEach ( item => { 
+		texto = texto + `<div class="grid-item"> 
+							<div class="container mt-5 d-flex justify-content-center">
+								<div class="cardEquipment p-3">
+									<div class="d-flex align-items-center">
+										<div class="image"> <img class="rounded" width="155" src="assets/img/computer.svg.png"/>  </div>
+										<div class="ml-3 w-100">
+											<h4 class="mb-0 mt-0">Equipo No: ${item.equipmentId} </h4> <span>Estado: ${item.status}</span>
+											<div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+												<div class="d-flex flex-column"> <span class="articles">Observaciones:</span><small>${item.observation}</small></div>
+											</div>
+											<div class="button mt-2 d-flex flex-row align-items-center"> 
+												<button class="btn btn-sm btn-outline-danger w-100">Bloquear</button>
+												<button class="btn btn-sm btn-primary w-100 ml-2" onclick="window.location.href='/dashboardequipment?id=${item.equipmentId}'">Detalle</button> 
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>		
+					     </div> `;
 	});
 	return texto;
 });

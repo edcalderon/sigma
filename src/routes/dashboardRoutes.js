@@ -140,7 +140,6 @@ Course.find(conditions,(err,result)=>{
 			})
 		}
 	});
-
 	if(req.body.eliminar){
 		console.log('Si se metio')
 		var conditions = {
@@ -174,84 +173,16 @@ Course.find(conditions,(err,result)=>{
 });
 
 app.get('/dashboardadmin', (req, res) =>{
-	//Cantidad de cursos disponibles
-	Course.countDocuments({state: "Disponible"},(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		console.log('CursosDisponibles: ' + result)
-		req.session.cursosDisponibles = result;
-	})
-	//Cantidad de cursos cerrados
-	Course.countDocuments({state: "Cerrado"},(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		console.log('CursosCerrado: ' + result)
-		req.session.cursosCerrados = result;
-	})
-	//Cursos cerrados y valorCursosInscritos
-	Course.aggregate([{$match: { state: "Cerrado" }},{$project: {_id: 0, valAvg: {$avg: "$value" }}}],(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		console.log(result)
-	})
-	Course.aggregate([{$group: { _id: "$value",total: { $sum: { $size: "$students"} }}}],(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		valor =[];
-		result.forEach(curso =>{
-			valor.push(curso._id * curso.total)
-		})
-		console.log(result)
-		console.log(valor)
-		ganancia = valor.reduce((a,b)=> a+b,0);
-		console.log(ganancia)
-		req.session.ganancia = ganancia;
-	})
-	//Cantidad de Inscritos por curso
-	//Con lo siguiente se podria hacer una grafica
-	Course.aggregate([{$group: { _id: "$name",total: { $sum: { $size: "$students"} }}}],(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		data = [];
-		result.forEach(curso =>{
-			data.push({x: curso._id, value: curso.total})
-		})
-		console.log(data)
-		console.log(result)
-		req.session.datos = data;
-	})
-	//listado de usuarios
-	User.find({},(err,users)=>{
-		if (err){
-			return console.log(err)
-		}
-		req.session.misusuarios = users;
-	})
-	//Listado de cursos
-	Course.find({},(err,result)=>{
+	Equipment.find({},(err,result)=>{
 		if (err){
 			return res.render('dashboardadmin',{
 				resultshow2: "Hubo un error: " + err,
 				cardcolor2: "danger"
 		 })
 		}
-		var json = {
-          chart: {
-              type: "bar",
-              title: 'Inscritos',
-              data: req.session.datos,
-              container: "container"
-          }
-      };
-		req.session.courses = result;
-		req.session.verCursosDisponibles = req.query.verCursosDisponibles;
-		req.session.verUsuarios =  req.query.verUsuarios
+		req.session.equipments = result
 		res.render ('dashboardadmin',{
+			equipmentsList: req.session.equipments,
 			courses : req.session.courses,
 			verCursosDisponibles : req.session.verCursosDisponibles,
 			misusuarios: req.session.misusuarios,
@@ -268,7 +199,6 @@ app.get('/dashboardadmin', (req, res) =>{
 app.post('/dashboardadmin', (req, res) =>{
 	// Guardar cursos
 
-	
 		//Cerrar curso
 		if(req.body.cerrar){
 				//listado de docentes
@@ -464,6 +394,35 @@ app.post('/dashboardcreateitem', (req, res) => {
 		}
 	});
 })
+
+app.get('/dashboardequipment', (req, res) =>{
+	Equipment.findOne({equipmentId: req.query.id},(err,result)=>{
+		if (err){
+ 
+		}if(result){
+			res.render ('dashboardequipment',{
+				category: result.category,
+				equipmentId: result.equipmentId,
+				monitorId: result.monitorId,
+				equipmentRef: result.equipmentRef,
+				monitorRef: result.monitorRef,
+				memoryRam:  result.memoryRam,
+				diskRef:  result.diskRef,
+				diskSpace:  result.diskSpace,
+				processor: result.processor,
+				mouse:  result.mouse,
+				keyboard:  result.keyboard,
+				OS:  result.os,
+				licenseOS:  result.osLicense,
+				officeVersion:  result.officeVersion,
+				officeLicense:  result.officeLicense,
+				observation:  result.observation,
+				diagnostic:  result.diagnostic,
+				recommendation: result.recommendation
+			})
+		}
+	})		 
+});
 
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardcreateitem',{

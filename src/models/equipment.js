@@ -99,6 +99,9 @@ const equipmentSchema = new Schema({
         type: String, 
         required: true,
         lowercase: true 
+    },
+    imagen: {
+        type: Buffer
     }
 });
 

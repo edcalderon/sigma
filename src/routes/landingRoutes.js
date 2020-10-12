@@ -73,13 +73,7 @@ app.post('/loginregister', (req, res) =>{
 				if(result.avatar){
 					req.session.avatar = result.avatar.toString('base64')
 				}
-				res.render('dashboardadmin', {
-					coordinador: req.session.coordinador,
-					roll: req.session.roll,
-					avatar: req.session.avatar,
-					email: req.session.email,
-					session: req.session.user,
-				})
+				res.redirect('/dashboardadmin')
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "aspirante"){
 				// session variables
