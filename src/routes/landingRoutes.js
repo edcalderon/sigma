@@ -23,13 +23,6 @@ const User = require('../models/user');
 const Equipment = require('../models/equipment');
 const Borrow = require('../models/borrow');
 
-// Session
-app.use(session({
-	secret: "keyboard cat",
-	resave: false,
-	saveUninitialized: true
-}))
-
 // Paths
 app.get('/', (req, res) =>{	
 	res.render ('landing',{
