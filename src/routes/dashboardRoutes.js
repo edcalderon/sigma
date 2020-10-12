@@ -267,37 +267,7 @@ app.get('/dashboardadmin', (req, res) =>{
 
 app.post('/dashboardadmin', (req, res) =>{
 	// Guardar cursos
-	let equipment = new Equipment ({
-		category: "portatil",
-		status:"disponible",
-		equipmentId: req.body.equipmentId,
-		monitorId: req.body.monitorId,
-		equipmentRef: req.body.equipmentRef,
-		monitorRef: req.body.monitorRef,
-		memoryRam:  req.body.memoryRam,
-		diskRef:  req.body.diskRef,
-		diskSpace:  req.body.diskSpace,
-		processor: req.body.processor,
-		mouse:  req.body.mouse,
-		keyboard:  req.body.keyboard,
-		OS:  req.body.os,
-		licenseOS:  req.body.osLicense,
-		officeVersion:  req.body.officeVersion,
-		officeLicense:  req.body.officeLicense,
-		observation:  req.body.observation,
-		diagnostic:  req.body.diagnostic,
-		recommendation:  req.body.recommendation
-	});
-	console.log(equipment)
-		equipment.save((err,result) =>{
-			if(err){
-				console.log(err);
-           		return;
-			} else {
-				console.log("¡Se registro el equipo!")
-				console.log(result)
-			}
-		});
+
 	
 		//Cerrar curso
 		if(req.body.cerrar){
@@ -412,14 +382,51 @@ app.get('/createitem', (req, res) =>{
 	})
 });
 
-app.post('/createitem', (req, res) =>{
+/*app.post('/createitem', (req, res) =>{
 	res.render('dashboardcreateitem',{
 		coordinador: req.session.coordinador,
 	})
-});
+});*/
+
+app.post('/dashboardcreateitem', (req, res) =>{
+	let equipment = new Equipment ({
+		category: "portatil",
+		status:"disponible",
+		equipmentId: req.body.equipmentId,
+		monitorId: req.body.monitorId,
+		equipmentRef: req.body.equipmentRef,
+		monitorRef: req.body.monitorRef,
+		memoryRam:  req.body.memoryRam,
+		diskRef:  req.body.diskRef,
+		diskSpace:  req.body.diskSpace,
+		processor: req.body.processor,
+		mouse:  req.body.mouse,
+		keyboard:  req.body.keyboard,
+		OS:  req.body.os,
+		licenseOS:  req.body.osLicense,
+		officeVersion:  req.body.officeVersion,
+		officeLicense:  req.body.officeLicense,
+		observation:  req.body.observation,
+		diagnostic:  req.body.diagnostic,
+		recommendation:  req.body.recommendation
+	});
+	console.log(equipment)
+		equipment.save((err,result) =>{
+			if(err){
+				console.log(err);
+           		return;
+			} else {
+				res.render('dashboardcreateitem');
+				console.log("¡Se registro el equipo!")
+				console.log(result)
+			}
+	});
+})
 
 app.get('/dashboardupdateuser', (req, res) =>{
-	res.render('dashboardupdateuser')
+	res.render('dashboardcreateitem',{
+		coordinador: req.session.coordinador,
+	})
 })
 
 app.post('/dashboardupdateuser', (req, res) =>{
