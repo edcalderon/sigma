@@ -395,14 +395,14 @@ app.get('/custompage', (req, res) =>{
 })
 
 app.get('/createitem', (req, res) =>{
-	res.render('dashboardadmin',{
-		createItem : true
+	res.render('dashboardcreateitem',{
 	})
 });
 
-app.post('/createitem'), (req, res) => {
-	res.render('dashboardadmin')
-}
+app.post('/createitem', (req, res) =>{
+	res.render('dashboardcreateitem',{
+	})
+});
 
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardupdateuser')
