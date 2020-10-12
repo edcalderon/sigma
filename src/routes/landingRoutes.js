@@ -101,10 +101,7 @@ app.post('/loginregister', (req, res) =>{
 					req.session.avatar = result.avatar.toString('base64')
 				}
 				res.render('dashboarduser', {
-/* 					login: req.body.login,
-					show: "Usuario y Contraseña correctas! ya puedes continuar.",
-					path: "/dashboarduser",
-					button: "success", */
+					roll: req.session.roll,
 				})
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "profesor"){
@@ -121,10 +118,7 @@ app.post('/loginregister', (req, res) =>{
 				}
 
 				 res.render('dashboardteacher', {
-/* 					login: req.body.login,
-					show: "Bienvenido profesor",
-					path: "/dashboardteacher",
-					button: "success", */
+					roll: req.session.roll,
 				})
 			}
 		})

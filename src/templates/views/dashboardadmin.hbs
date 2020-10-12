@@ -92,60 +92,54 @@
               </div>
             </div>
           </div>
-
           <!-- Content Row -->
           <div class="row">
-            <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-12">
-              <div class="card shadow md-12">
-                  {{#if createItem}}
-                    {{>createitem}}
-                  {{else}}
-                    {{>gridEquipments}}
-                  {{/if}}    
-              </div> 
-            </div>
-        <!-- /.container-fluid -->
-        {{else}}
-        <div class="row">
-
-        <!-- Area Chart -->
-        <div class="col-xl-12 col-lg-8">
-          <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Upss</h6>
-
-            </div>
-            <!-- Card Body -->
-            <div  id="container" class="card-body">
-                      <h2>Ups! no tienes acceso a esta pagina logeatee!</h2>
-            </div>
-          </div>
-        </div>
-        <!-- Pie Chart -->
-        <!-- Content Row final space -->
+                <!-- Area Chart -->
+                <div class="col-xl-12 col-lg-12">
+                  <div class="card shadow md-12">
+                      {{#if createItem}}
+                        {{>createitem}}
+                      {{else}}
+                        {{>gridEquipments}}
+                      {{/if}}    
+                  </div> 
+                </div>
+            <!-- /.container-fluid -->
+            {{else}}
             <div class="row">
-              <!-- Content Column -->
-                <div class="col-lg-6 mb-4"></div>
-                <div class="col-lg-6 mb-4"></div>
-            </div>
-        <!-- Content Row final space-->
-      </div>
+              <!-- Area Chart -->
+              <div class="col-xl-12 col-lg-8">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Upss</h6>
 
-        {{/if}}
+                  </div>
+                  <!-- Card Body -->
+                  <div  id="container" class="card-body">
+                            <h2>Ups! no tienes acceso a esta pagina logeatee!</h2>
+                  </div>
+                </div>
+              </div>
+              <!-- Pie Chart -->
+              <!-- Content Row final space -->
+                  <div class="row">
+                    <!-- Content Column -->
+                      <div class="col-lg-6 mb-4"></div>
+                      <div class="col-lg-6 mb-4"></div>
+                  </div>
+              <!-- Content Row final space-->
+            </div>
+            {{/if}}
+          </div>
+       </div>
       </div>
-      <!-- End of Main Content -->
-    <!-- Footer -->
-  
-  </div>
-  <!-- End of Content Wrapper -->
-  {{>footerdashboard}}
-</div>
+       {{>footerdashboard}}
+    </div> 
+  </div>  
+
 
 <!-- End of Page Wrapper -->
-
-
   <!-- card hide-->
   <script>
       anychart.onDocumentReady(function() {
@@ -154,7 +148,6 @@
           chart.draw();
       });
   </script>
-
 
   <script>
     setTimeout(function() {
