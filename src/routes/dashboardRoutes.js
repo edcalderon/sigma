@@ -371,7 +371,8 @@ app.get('/dashboardequipment', (req, res) =>{
 				officeLicense:  result.officeLicense,
 				observation:  result.observation,
 				diagnostic:  result.diagnostic,
-				recommendation: result.recommendation
+				recommendation: result.recommendation,
+				coordinador: req.session.coordinador,
 			})
 		}
 	})		 
@@ -397,7 +398,6 @@ app.post('/dashboardequipment', (req, res) =>{
 	if(req.body.diagnostic){ Object.assign(conditions, {diagnostic : req.body.diagnostic}) }
 	if(req.body.recommendation){ Object.assign(conditions, {recommendation : req.body.recommendation}) }
 	
-
 	Equipment.findOneAndUpdate({equipmentId: req.session.equipmentId}, {$set: conditions}, {new: true}, (err, result) => {
 		if (err){
 			 return console.log(err)
