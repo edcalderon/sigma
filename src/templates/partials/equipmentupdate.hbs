@@ -3,121 +3,137 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<div class="container register">
-    <div class="row">
-    <div class="col-md-3 register-left">
-        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-        <h3>Welcome</h3>
-        <p>You are 30 seconds away from earning your own money!</p>
-        <input type="submit" name="" value="Login" /><br />
-    </div>
-    <div class="col-md-9 register-right">
-        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Employee</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Hirer</a>
-        </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <h3 class="register-heading">Apply as a Employee</h3>
-            <div class="row register-form">
-            <div class="col-md-6">
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                </div>
-                <div class="form-group">
-                <div class="maxl">
-                    <label class="radio inline">
-                    <input type="radio" name="gender" value="male" checked>
-                    <span> Male </span>
-                    </label>
-                    <label class="radio inline">
-                    <input type="radio" name="gender" value="female">
-                    <span>Female </span>
-                    </label>
-                </div>
-                </div>
+<form action="/dashboardequipment" method="POST">
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <h3>Welcome</h3>
+                <p>You are 30 seconds away from earning your own money!</p>
+                <input type="submit" name="" value="Login" /><br />
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your Email *" value="" />
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                        aria-selected="true">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                        aria-selected="false">Hirer</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Apply as a Employee</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Identificador del equipo:</label>
+                                    <input type="text" class="form-control" id="equipmentId" name="equipmentId" placeholder="" value={{equipmentId}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Referencia del equipo:</label>
+                                    <input type="text" class="form-control" id="equipmentRef" name="equipmentRef" placeholder="" value={{equipmentRef}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Identificador del monitor:</label>
+                                    <input type="text" class="form-control" id="monitorId" name="monitorId" placeholder="" value={{monitorId}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Referencia del monitor:</label>
+                                    <input type="text" class="form-control" id="monitorRef" name="monitorRef" placeholder="" value={{monitorRef}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">¿El equipo cuenta con mouse? :</label>
+                                    <div class="select mb-3">
+                                        <select name="mouse" class="form-control" value={{mouse}}>
+                                            <option value="si">Sí</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Procesador :</label>
+                                    <input type="text" id="processor" name="processor" class="form-control" placeholder="" value={{processor}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Memoria instalada (RAM) :</label>
+                                    <input type="text" id="memoryRam" name="memoryRam" class="form-control" placeholder="" value={{memoryRam}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Referencia del disco duro * :</label>
+                                    <input type="text" id="diskRef" name="diskRef" placeholder="" class="form-control" value={{diskRef}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Espacio total el disco duro * :</label>
+                                    <input type="text" id="diskSpace" name="diskSpace" placeholder="" class="form-control" value={{diskSpace}} >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">¿El equipo cuenta con teclado? :</label>
+                                    <div class="select mb-3">
+                                        <select name="keyboard" class="form-control" value={{keyboard}}>
+                                            <option value="si">Sí</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                    <input type="submit" class="btnRegister" value="Register" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h3 class="register-heading">Apply as a Hirer</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Sistema operativo:</label>
+                                    <input type="text" id="os" name="os" placeholder="" class="form-control" value={{OS}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Licencia del sistema operativo:</label>
+                                    <input type="text" id="osLicense" name="osLicense" placeholder="" class="form-control" value={{licenseOS}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Versión de Office:</label>
+                                    <input type="text" id="officeVersion" name="officeVersion" placeholder="" class="form-control" value={{officeVersion}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Licencia de Office:</label>
+                                    <input type="text" id="officeLicense" name="officeLicense" placeholder="" class="form-control" value={{officeLicense}}>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Observaciones:</label>
+                                    <input type="text" id="observation" name="observation" placeholder="" class="form-control" value={{observation}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Diagnóstico:</label>
+                                    <input type="text" id="diagnostic" name="diagnostic" placeholder="" class="form-control" value={{diagnostic}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Recomendaciones:</label>
+                                    <input type="text" id="recommendation" name="recommendation" placeholder="" class="form-control" value={{recommendation}}>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Estado:</label>
+                                    <div class="select mb-3">
+                                        <select name="status" class="form-control" value="">
+                                            <option value="disponible">Disponible</option>
+                                            <option value="ocupado">Ocupado</option>
+                                            <option value="mantenimiento">Mantenimiento</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                    <input type="submit" class="btnRegister" value="Register"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
-                    placeholder="Your Phone *" value="" />
-                </div>
-                <div class="form-group">
-                <select class="form-control">
-                    <option class="hidden" selected disabled>Please select your Sequrity Question</option>
-                    <option>What is your Birthdate?</option>
-                    <option>What is Your old Phone Number</option>
-                    <option>What is your Pet Name?</option>
-                </select>
-                </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                </div>
-                <input type="submit" class="btnRegister" value="Register" />
-            </div>
             </div>
         </div>
-        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <h3 class="register-heading">Apply as a Hirer</h3>
-            <div class="row register-form">
-            <div class="col-md-6">
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *"
-                    value="" />
-                </div>
-
-
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password *" value="" />
-                </div>
-                <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                </div>
-                <div class="form-group">
-                <select class="form-control">
-                    <option class="hidden" selected disabled>Please select your Sequrity Question</option>
-                    <option>What is your Birthdate?</option>
-                    <option>What is Your old Phone Number</option>
-                    <option>What is your Pet Name?</option>
-                </select>
-                </div>
-                <div class="form-group">
-                <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                </div>
-                <input type="submit" class="btnRegister" value="Register" />
-            </div>
-            </div>
-        </div>
-        </div>
     </div>
-    </div>
-</div>
+</form>

@@ -19,6 +19,7 @@ const User = require('../models/user');
 const Course = require('../models/course');
 const Equipment = require('../models/equipment');
 const Borrow = require('../models/borrow');
+const { mapReduce } = require('../models/user');
 
 // Directory Paths
 const directorio_partials = path.join(__dirname, './../templates/partials');
@@ -398,6 +399,7 @@ app.post('/dashboardcreateitem', (req, res) => {
 })
 
 app.get('/dashboardequipment', (req, res) =>{
+	req.session.equipmentId = req.query.id; /*Tener cuidado con esto*/ 
 	Equipment.findOne({equipmentId: req.query.id},(err,result)=>{
 		if (err){
  
@@ -414,8 +416,8 @@ app.get('/dashboardequipment', (req, res) =>{
 				processor: result.processor,
 				mouse:  result.mouse,
 				keyboard:  result.keyboard,
-				OS:  result.os,
-				licenseOS:  result.osLicense,
+				OS:  result.OS,
+				licenseOS:  result.licenseOS,
 				officeVersion:  result.officeVersion,
 				officeLicense:  result.officeLicense,
 				observation:  result.observation,
@@ -424,6 +426,55 @@ app.get('/dashboardequipment', (req, res) =>{
 			})
 		}
 	})		 
+});
+
+app.post('/dashboardequipment', (req, res) =>{
+	var conditions = {};
+	if(req.body.equipmentId){ Object.assign(conditions, {equipmentId : req.body.equipmentId}) }
+	if(req.body.equipmentRef){ Object.assign(conditions, {equipmentRef: req.body.equipmentRef}) }
+	if(req.body.monitorId){ Object.assign(conditions, {monitorId : req.body.monitorId}) }
+	if(req.body.monitorRef){ Object.assign(conditions, {mmonitorRef : req.body.monitorRef}) }
+	if(req.body.memoryRam){ Object.assign(conditions, {memoryRam : req.body.memoryRam}) }
+	if(req.body.diskRef){ Object.assign(conditions, {diskRef : req.body.diskRef}) }
+	if(req.body.diskSpace){ Object.assign(conditions, {diskSpace: req.body.diskSpace}) }
+	if(req.body.processor){ Object.assign(conditions, {processor : req.body.processor}) }
+	if(req.body.mouse){ Object.assign(conditions, {mouse : req.body.mouse}) }
+	if(req.body.keyboard){ Object.assign(conditions, {keyboard : req.body.keyboard}) }
+	if(req.body.diskSpace){ Object.assign(conditions, {OS: req.body.os}) }
+	if(req.body.osLicense){ Object.assign(conditions, {licenseOS : req.body.osLicense}) }
+	if(req.body.officeVersion){ Object.assign(conditions, {officeVersion : req.body.officeVersion}) }
+	if(req.body.officeLicense){ Object.assign(conditions, {officeLicense : req.body.officeLicense}) }
+	if(req.body.observation){ Object.assign(conditions, {observation : req.body.observation}) }
+	if(req.body.diagnostic){ Object.assign(conditions, {diagnostic : req.body.diagnostic}) }
+	if(req.body.recommendation){ Object.assign(conditions, {recommendation : req.body.recommendation}) }
+	
+
+	Equipment.findOneAndUpdate({equipmentId: req.session.equipmentId}, {$set: conditions}, {new: true}, (err, result) => {
+		if (err){
+			 return console.log(err)
+		 }
+		 res.render('dashboardequipment', {
+			category: result.category,
+			equipmentId: result.equipmentId,
+			monitorId: result.monitorId,
+			equipmentRef: result.equipmentRef,
+			monitorRef: result.monitorRef,
+			memoryRam:  result.memoryRam,
+			diskRef:  result.diskRef,
+			diskSpace:  result.diskSpace,
+			processor: result.processor,
+			mouse:  result.mouse,
+			keyboard:  result.keyboard,
+			OS:  result.OS,
+			licenseOS:  result.licenseOS,
+			officeVersion:  result.officeVersion,
+			officeLicense:  result.officeLicense,
+			observation:  result.observation,
+			diagnostic:  result.diagnostic,
+			recommendation: result.recommendation,
+			resultshow: "Datos actualizados correctamente"
+		 })
+	});
 });
 
 app.get('/dashboardupdateuser', (req, res) =>{
@@ -449,7 +500,7 @@ app.post('/dashboardupdateuser', (req, res) =>{
 			Object.assign(conditions, {roll : req.body.roll})
 		}
 
-		User.findOneAndUpdate({_id: req.session.idUser}, {$set: conditions}, {new: true},(err, resultado) => {
+		User.findOneAndUpdate({_id: req.session.idUser}, {$set: conditions}, {new: true}, (err, resultado) => {
 				if (err){
 					 return console.log(err)
 				 }console.log("hola" + resultado.firstname)
