@@ -19,27 +19,47 @@ hbs.registerHelper('filterEquipmentsById', (equipmentId, equipmentsList) => {
 
 hbs.registerHelper('equipmentDeletion', (equipmentMatches) => {
 	let texto = `	<form action="/equipmentfilter" method="POST">
-						<table class='table table-striped table-hover'>
-							<thead class='thead-dark'>
-								<th>Categoría</th>
-								<th>Estado</th>
-								<th>ID equipo</th>
-								<th>ID monitor</th>
-								<th>Ref. equipo</th>
-								<th>Ref. monitor</th>
-								<th>RAM</th>
-								<th>Ref. disco duro</th>
-								<th>Espacio de disco duro</th>
-								<th>Procesador</th>
-								<th>Dispone de mouse</th>
-								<th>Dispone de teclado</th>
-								<th>Sistema operativo</th>
-								<th>Licencia de sistema operativo</th>
-								<th>Versión de M. Office</th>
-								<th>Licencia de M. Office</th>
-								<th></th>
-							</thead>
-							<tbody>`;
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<th>Categoría</th>
+									<th>Estado</th>
+									<th>IDequipo</th>
+									<th>IDmonitor</th>
+									<th>Ref.equipo</th>
+									<th>Ref.monitor</th>
+									<th>RAM</th>
+									<th>Ref.Disco</th>
+									<th>Disco</th>
+									<th>Procesador</th>
+									<th>Mouse</th>
+									<th>Teclado</th>
+									<th>SO</th>
+									<th>Lic.SO</th>
+									<th>V. M. Office</th>
+									<th>Lic. M. Office</th>
+									<th></th>
+								</thead>
+								<tfoot>
+									<th>Categoría</th>
+									<th>Estado</th>
+									<th>IDequipo</th>
+									<th>IDmonitor</th>
+									<th>Ref.equipo</th>
+									<th>Ref.monitor</th>
+									<th>RAM</th>
+									<th>Ref.Disco</th>
+									<th>Disco</th>
+									<th>Procesador</th>
+									<th>Mouse</th>
+									<th>Teclado</th>
+									<th>SO</th>
+									<th>Lic.SO</th>
+									<th>V. M. Office</th>
+									<th>Lic. M. Office</th>
+									<th></th>
+								</tfoot>
+								<tbody>`;
 					equipmentMatches.forEach( equipment =>{
 						texto = texto +
 								`<tr>
@@ -66,7 +86,7 @@ hbs.registerHelper('equipmentDeletion', (equipmentMatches) => {
 									</td>
 								</tr> `;
 					})
-	texto = texto + '</tbody> </table></form>';
+	texto = texto + `</tbody>s</table></form>`;
 	return texto;
 })
 

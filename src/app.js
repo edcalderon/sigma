@@ -133,9 +133,10 @@ app.use((req,res,next) => {
     res.locals.licenseOS =  req.session.osLicense,
     res.locals.officeVersion = req.session.officeVersion,
     res.locals.officeLicense = req.session.officeLicense,
-    res.locals.observation = req.session.observation,
+    res.locals.observation = req.session.observsation,
     res.locals.diagnostic = req.session.diagnostic,
-    res.locals.recommendation = req.session.recommendation
+    res.locals.recommendation = req.session.recommendation,
+    res.locals.listEquipments = req.session.listEquipments 
 
 
 

@@ -478,9 +478,36 @@ app.post('/dashboardequipment', (req, res) =>{
 });
 
 app.get('/equipmentfilter', (req, res) =>{
-
+	Equipment.find({}, (err, result) => {
+		if(err){
+			return console.log(err)
+		} 
+		req.session.listEquipments = result;
+		res.render('equipmentfilter', {
+			listEquipments : req.session.listEquipments
+		})
+	})
 })
 
+app.post('/equipmentfilter', (req, res) =>{
+	if(req.body.deleteEquipment){
+		Equipment.deleteOne({equipmentId : req.body.deleteEquipment}, (err, result) => {
+			if(err){
+				res.render('equipmentfilter',{
+					listEquipments: req.session.listEquipments,
+					error: 'Error al eliminar el equipo'
+				})
+			}
+			res.render('equipmentfilter',{
+				listEquipments: req.session.listEquipments,
+				success: 'El equipo se eliminó correctamente'
+			})
+		});
+	}
+	res.render('equipmentfilter',{
+		listEquipments: req.session.listEquipments
+	})
+})
 
 
 
