@@ -1,27 +1,30 @@
 <link href="assets/css/equipment-form.css" rel="stylesheet">
+<script src="js/qrcode.min.js"></script>
+
 <form action="/dashboardequipment" method="POST">
     <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left">
-                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                <h3>Welcome</h3>
-                <p>You are 30 seconds away from earning your own money!</p>
-                <input type="submit" name="" value="Login" /><br />
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2017%2F02%2F16%2F10%2F29%2Ficon-2071010_960_720.png&f=1&nofb=1" alt="" />
+                <h3>Equipo: {{equipmentId}}</h3>
+               {{!--  <p>You are 30 seconds away from earning your own money!</p> --}}
+                <div id="qr_code"></div>
+                <input type="submit" onclick="generateQr();" name="" value="Generar QR" /><br />
             </div>
             <div class="col-md-9 register-right">
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                        aria-selected="true">Employee</a>
+                        aria-selected="true">Hardware</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                        aria-selected="false">Hirer</a>
+                        aria-selected="false">Software</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Apply as a Employee</h3>
+                        <h3 class="register-heading">Detalle</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -76,12 +79,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                    <input type="submit" class="btnRegister" value="Register" />
+                                    <input type="submit" class="btnRegister" value="Actualizar" />
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h3 class="register-heading">Apply as a Hirer</h3>
+                        <h3 class="register-heading">Detalle</h3>
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -124,7 +127,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                    <input type="submit" class="btnRegister" value="Register"/>
+                                    <input type="submit" class="btnRegister" value="Actualizar"/>
                             </div>
                         </div>
                     </div>
@@ -133,3 +136,9 @@
         </div>
     </div>
 </form>
+
+<script type="text/javascript">
+    function generateQr(){
+      new QRCode(document.getElementById("qr_code"), "https://codespeedy.com");
+    }    
+</script>

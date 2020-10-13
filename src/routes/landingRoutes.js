@@ -30,6 +30,11 @@ app.get('/', (req, res) =>{
 	})
 });
 
+app.get('/error', (req, res) =>{	
+	res.render ('error',{
+	})
+});
+
 app.get('/loginregister', (req, res) =>{
   	res.render('loginregister', {
 	})
@@ -75,7 +80,7 @@ app.post('/loginregister', (req, res) =>{
 				}
 				res.redirect('/dashboardadmin')
 			}
-			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "aspirante"){
+			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "usuario"){
 				// session variables
 				req.session.user = result._id
 				req.session.roll = result.roll
@@ -87,9 +92,7 @@ app.post('/loginregister', (req, res) =>{
 				if(result.avatar){
 					req.session.avatar = result.avatar.toString('base64')
 				}
-				res.render('dashboarduser', {
-					roll: req.session.roll,
-				})
+				res.redirect('/dashboarduser')
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "profesor"){
 				// session variables
@@ -124,30 +127,29 @@ app.post('/register', (req, res) =>{
 		password: bcrypt.hashSync(req.body.inputPassword, 10),
 		phone: req.body.phone,
 		cc: req.body.cedula,
-		roll: "aspirante",
+		roll: "usuario",
 		cursos: []
 	})
 	user.save((err,result)=>{
 		if(err){
 			console.log(err);
-						res.render('register', {
-							registro: req.body.registro,
-							show: "Upss! el usuario con ese email o cedula ya existe"
-						})
-		}
-		const mailmsg = {
-		  to: req.body.inputEmail,
-		  from: 'edwardca12@gmail.com',
-		  subject: 'Bienvenido a mi app!',
-		  text: 'Hola, bienvenido a mi aplicacion web, estamos en construccion.',
-		  html: `<h1> Hola ${req.body.firstName}!, bienvenido a mi aplicación web, estamos en construcción.<h1> <br> <strong>pronto mucho más! esperanos.</strong>`,
-		};
-        // send mail
-		sgMail.send(mailmsg)
-		res.render('register',{
-			registro: req.body.registro,
-			show: "<a href='/loginregister' >Registro exitoso! ya puedes ingresar </a>"
-		})
+			res.render('register', {
+				show: "Upss! El usuario con ese email o cedula ya existe intenta de nuevo."
+			})
+		}if(result){
+		    const mailmsg = {
+				to: req.body.inputEmail,
+				from: 'edwardca12@gmail.com',
+				subject: 'Bienvenido a mi app!',
+				text: 'Hola, bienvenido a mi aplicacion web, estamos en construccion.',
+				html: `<h1> Hola ${req.body.firstName}!, bienvenido a mi aplicación web, estamos en construcción.<h1> <br> <strong>pronto mucho más! esperanos.</strong>`,
+			};
+			sgMail.send(mailmsg)
+			res.render('register',{
+				registro: req.body.registro,
+				show: "<a href='/loginregister'>Registro exitoso! ya puedes ingresar </a>"
+			})
+		}		
 	})
 });
 

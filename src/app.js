@@ -115,8 +115,6 @@ app.use((req,res,next) => {
     res.locals.ganancia = req.session.ganancia
     res.locals.datos = req.session.datos
     res.locals.coordinador = req.session.coordinador
-
-
     res.locals.category = req.session.category = "portatil",
     res.locals.status =  req.session.status,
     res.locals.equipmentId =  req.session.equipmentId,
@@ -137,9 +135,6 @@ app.use((req,res,next) => {
     res.locals.diagnostic = req.session.diagnostic,
     res.locals.recommendation = req.session.recommendation,
     res.locals.listEquipments = req.session.listEquipments 
-
-
-
 
     //vars modify user by admin
     if(req.session.modificar){
