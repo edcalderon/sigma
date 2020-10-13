@@ -7,6 +7,70 @@ const Course = require('./../models/course');
 listaInscritos = [];
 listaActualizaUsuarios = [];
 
+hbs.registerHelper('filterEquipmentsById', (equipmentId, equipmentsList) => {
+	let matches = [];
+	equipmentsList.forEach(item => {
+		if(item[equipmentId] === equipmentId){
+			matches.push(item)
+		}	
+	})
+	return matches;
+});
+
+hbs.registerHelper('equipmentDeletion', (equipmentMatches) => {
+	let texto = `	<form action="/equipmentfilter" method="POST">
+						<table class='table table-striped table-hover'>
+							<thead class='thead-dark'>
+								<th>Categoría</th>
+								<th>Estado</th>
+								<th>ID equipo</th>
+								<th>ID monitor</th>
+								<th>Ref. equipo</th>
+								<th>Ref. monitor</th>
+								<th>RAM</th>
+								<th>Ref. disco duro</th>
+								<th>Espacio de disco duro</th>
+								<th>Procesador</th>
+								<th>Dispone de mouse</th>
+								<th>Dispone de teclado</th>
+								<th>Sistema operativo</th>
+								<th>Licencia de sistema operativo</th>
+								<th>Versión de M. Office</th>
+								<th>Licencia de M. Office</th>
+								<th></th>
+							</thead>
+							<tbody>`;
+					equipmentMatches.forEach( equipment =>{
+						texto = texto +
+								`<tr>
+									<td> ${equipment.category} </td>
+									<td> ${equipment.status} </td>
+									<td> ${equipment.equipmentId}</td>
+									<td> ${equipment.monitorId} </td>
+									<td> ${equipment.equipmentRef} </td>
+									<td> ${equipment.monitorRef} </td>
+									<td> ${equipment.memoryRam}</td>
+									<td> ${equipment.diskRef} </td>
+									<td> ${equipment.diskSpace} </td>
+									<td> ${equipment.processor} </td>
+									<td> ${equipment.mouse}</td>
+									<td> ${equipment.keyboard} </td>
+									<td> ${equipment.OS} </td>
+									<td> ${equipment.licenseOS} </td>
+									<td> ${equipment.officeVersion}</td>
+									<td> ${equipment.officeLicense} </td>
+									<td>
+										<button class="btn btn-primary" id="deleteEquipment" name="deleteEquipment" value="${equipment.equipmentId}">
+											Eliminar
+										</button>
+									</td>
+								</tr> `;
+					})
+	texto = texto + '</tbody> </table></form>';
+	return texto;
+})
+
+
 hbs.registerHelper('showEquipments', (equipmentsList) => {
 	let texto = "";
 	equipmentsList.forEach ( item => { 
