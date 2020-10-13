@@ -400,7 +400,7 @@ app.post('/dashboardcreateitem', (req, res) => {
 
 app.get('/dashboardequipment', (req, res) =>{
 	req.session.equipmentId = req.query.id; /*Tener cuidado con esto*/ 
-	Equipment.findOne({equipmentId: req.query.id},(err,result)=>{
+	Equipment.findOne({equipmentId: req.query.id}, (err, result)=>{
 		if (err){
  
 		}if(result){
@@ -476,6 +476,17 @@ app.post('/dashboardequipment', (req, res) =>{
 		 })
 	});
 });
+
+app.get('/equipmentfilter', (req, res) =>{
+
+})
+
+
+
+
+
+
+
 
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardcreateitem',{
