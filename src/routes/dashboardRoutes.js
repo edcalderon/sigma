@@ -41,54 +41,8 @@ app.use(session({
 }))
 
 app.get('/dashboarduser', (req, res) =>{
-	//lista de cursos inscritos
-	Course.find({students: { $elemMatch: {cedula:req.session.cc,nombre:req.session.firstname}}},(err,result)=>{
-		if (err){
-			return console.log(err)
-		}
-		count = 0;
-		result.forEach(curso => {
-			count = count + curso.value
-		})
-		console.log('la cuenta: ' +   count)
-		console.log('mi resultado: '+result)
-		req.session.miscursos = result;
-		req.session.valorCursosInscritos = count;
-	})
+	res.render ('dashboarduser',{
 
-	//Cantidad de cursos Inscritos
-	Course.countDocuments({students: { $elemMatch: {cedula:req.session.cc,nombre:req.session.firstname}}}, (err,result) => {
-		if(err){
-			console.log(err)
-		}
-		console.log('cursos?: ' + result)
-		req.session.cursosInscritos = result;
-	})
-
-	//Cantidad de cursos disponibles
-	Course.countDocuments({state: "Disponible"},(err,result)=>{
-		if(err){
-			console.log(err)
-		}
-		console.log('CursosDisponibles: ' + result)
-		req.session.cursosDisponibles = result;
-	})
-
-	//listar cursos disponibles
-	Course.find({state: "Disponible"},(err,result)=>{
-		if (err){
-			return console.log(err)
-		}
-		req.session.listado = result;
-		req.session.verCursosDisponibles = req.query.verCursosDisponibles;
-		res.render ('dashboarduser',{
-			listado : req.session.listado,
-			verCursosDisponibles : req.session.verCursosDisponibles,
-			miscursos: req.session.miscursos,
-			cantidadCursosInscritos: req.session.cursosInscritos,
-			cantidadCursosDisponibles: req.session.cursosDisponibles,
-			valorCursosInscritos: req.session.valorCursosInscritos
-		})
 	})
 });
 
@@ -278,7 +232,7 @@ app.post('/dashboardadmin', (req, res) =>{
 				var obj = result.toObject()
 				console.log(obj)
 
-        //set session vars
+                //set session vars
 				req.session.modificar = req.body.modificar
 				req.session.idUser = obj._id,
 				req.session.cursosUser = obj.cursos
@@ -301,6 +255,7 @@ app.post('/dashboardadmin', (req, res) =>{
 			})
 		}
 });
+
 app.get('/custompage', (req, res) =>{
 	res.render('custompage')
 })
@@ -312,12 +267,6 @@ app.get('/createitem', (req, res) =>{
 		coordinador: req.session.coordinador,
 	})
 });
-
-/*app.post('/createitem', (req, res) =>{
-	res.render('dashboardcreateitem',{
-		coordinador: req.session.coordinador,
-	})
-});*/
 
 app.post('/dashboardcreateitem', (req, res) => {
 	let equipment = new Equipment({
@@ -481,13 +430,6 @@ app.get('/equipmentfilter', (req, res) =>{
 
 })
 
-
-
-
-
-
-
-
 app.get('/dashboardupdateuser', (req, res) =>{
 	res.render('dashboardcreateitem',{
 		coordinador: req.session.coordinador,
@@ -622,60 +564,13 @@ app.get('/dashboardchat', (req, res) =>{
 			idm: req.session.user
 		})
 });
+
 app.get('/dashboardchat2', (req, res) =>{
   	res.render('dashboardchat2', {
 			chatusername : req.query.chatusername,
 		})
 });
 
-app.get('/dashboardteacher', (req, res)=>{
-// 	mismaterias = []
-// 	User.find({_id: req.session.user},{cursos: 1, _id: 0}, (err,result)=>{
-// 		if(err){
-// 			console.log(err)
-// 		}
-// 		result.forEach(c=>{
-// 			console.log(c.cursos)
-// 			arr = c.cursos;
-// 			arr.forEach(m=>{
-// 				console.log(m)
-// 				Course.find({name: m},(error, resultado)=>{
-// 					if(error){
-// 						console.log(error)
-// 					}
-// 					console.log(resultado) //resultado es lo que hay que enviar al helper para iterarlo
-// 					req.session.mismaterias = mismaterias;
-// 					mismaterias.push(req.session.mismaterias)
-//
-// 				})
-// 			})
-// 		})
-// 		console.log('materias: ' + mismaterias)
-// 		return res.render('dashboardteacher',{
-// 			materias: mismaterias
-// 	})
-//
-// })
-
-	// User.find({cc: req.session.user, cursos: {$ne: 'null'}},(err,result) =>{
-	// 	if(err){
-	// 		return console.log(err)
-	// 	}
-	// 	console.log(result)
-	// 	return res.render('dashboardteacher',{
-	// 		materias: result
-	// 	})
-	// })
-
-	User.find({_id: req.session.user},{cursos: 1, _id: 0},(err,result)=>{
-		if(err){
-			return console.log(err)
-		}
-		return res.render('dashboardteacher',{
-			materias: result
-		})
-	})
-})
 
 
 module.exports = app;
