@@ -91,13 +91,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  background: #1acc8d;
+  background: #e2c82c;
   color: #fff;
   transition: all 0.4s;
 }
 
 .back-to-top i:hover {
-  background: #2be4a2;
+  background: #f4ff59;
   color: #fff;
 }
 
@@ -126,13 +126,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-scrolled {
-  background: rgba(1, 4, 136, 0.9);
-  height: 60px;
+  background: rgba(28, 114, 28, 0.9);
+  height: 70px;
 }
 
 #header .logo h1 {
   font-size: 28px;
-  margin: 0;
+  margin: 4px 0 0 0;
   padding: 0;
   line-height: 1;
   font-weight: 700;
@@ -145,8 +145,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #header .logo img {
   padding: 0;
-  margin: 0;
-  max-height: 40px;
+  /*margin: 0;*/
+  margin: 5px 0 0 0;
+  max-height: 60px;
+  overflow: hidden;
 }
 
 @media (max-width: 992px) {
@@ -154,7 +156,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 64px;
   }
   #header .logo h1 {
-    font-size: 28px;
+    font-size: 17px;
+    visibility: hidden;
   }
 }
 
@@ -374,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   position: fixed;
-  background: rgba(13, 18, 252, 0.6);
+  background: rgba(67, 137, 67, 0.6);
   overflow: hidden;
   display: none;
   transition: ease-in-out 0.2s;
@@ -405,7 +408,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero:before {
   content: "";
-  background: rgba(2, 5, 161, 0.91);
+  background: rgba(67, 137, 67, 0.91);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -637,7 +640,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #010483;
+  color: #1c721c;
 }
 
 /*--------------------------------------------------------------
@@ -957,7 +960,7 @@ section {
 .details .content h3 {
   font-weight: 600;
   font-size: 26px;
-  color: #010483;
+  color: #1c721c;
 }
 
 .details .content ul {
@@ -972,7 +975,7 @@ section {
 .details .content ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #1acc8d;
+  color: #e2c82c;
 }
 
 .details .content p:last-child {
@@ -1382,7 +1385,7 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #3f43fd;
+  color: #1c721c;
   float: left;
   width: 44px;
   height: 44px;
@@ -1399,14 +1402,14 @@ section {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #010483;
+  color: #1c721c;
 }
 
 .contact .info p {
   padding: 0 0 0 60px;
   margin-bottom: 0;
   font-size: 14px;
-  color: #0205a1;
+  color: #1c721c;
 }
 
 .contact .info .email, .contact .info .phone {
@@ -1414,7 +1417,7 @@ section {
 }
 
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #1acc8d;
+  background: #1c721c;
   color: #fff;
 }
 
@@ -1451,7 +1454,7 @@ section {
 .contact .php-email-form .sent-message {
   display: none;
   color: #fff;
-  background: #18d26e;
+  background: #e2c82c;
   text-align: center;
   padding: 15px;
   font-weight: 600;
@@ -1471,7 +1474,7 @@ section {
   width: 24px;
   height: 24px;
   margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
+  border: 3px solid #e2c82c;
   border-top-color: #eee;
   -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
@@ -1492,7 +1495,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-  background: #1acc8d;
+  background: #e2c82c;
   border: 0;
   padding: 10px 30px;
   color: #fff;
@@ -1501,7 +1504,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-  background: #34e5a6;
+  background: #d8c55d;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1526,7 +1529,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #010351;
+  background: #245224;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
