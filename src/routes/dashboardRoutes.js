@@ -7,11 +7,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
-const bcrypt = require('bcrypt');
 const session = require('express-session');
 const multer = require('multer');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(APIKEY);
+const { jsPDF } = require("jspdf");
+const fs = require('fs');
+const pdf = require('html-pdf');
+const pdfTemplate = require('../documents');
 //var $ = require("jquery");
 
 // Models mongodb
@@ -45,6 +48,21 @@ app.get('/dashboarduser', (req, res) =>{
 
 	})
 });
+
+app.post('/create-pdf', (req, res) => {
+	data = Object.keys(JSON.parse(JSON.stringify(req.body))); // THIS IS HORRIBLE CHANGE PLS
+	console.log(JSON.parse(data[0]))
+    pdf.create(pdfTemplate(JSON.parse(data[0])), {}).toFile(`${__dirname}/result.pdf`, (err) => {
+        if(err) {
+            res.send(Promise.reject());
+        }
+        res.send(Promise.resolve());
+    });
+});
+
+app.get('/fetch-pdf', (req, res) => {
+    res.sendFile(`${__dirname}/result.pdf`)
+})
 
 app.post('/dashboarduser', (req, res) =>{
 //Validación

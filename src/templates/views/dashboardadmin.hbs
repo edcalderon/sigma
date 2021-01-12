@@ -23,70 +23,22 @@
           <!-- Content Row -->
           
           <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-12 col-md-12 mb-12">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Disponibles</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cotizador</div>
+                        <form>
+                          <label for="fname">First name:</label><br>
+                          <input type="text" id="fname" name="fname" value="John"><br>
+                          <label for="lname">Last name:</label><br>
+                          <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                           <button type="button" onclick="createAndDownloadPdf()">Click me</button> 
+                        </form> 
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-desktop fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">En uso</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">33</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-desktop fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Ganancia cursos cerrados</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ganancia}}</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -95,15 +47,6 @@
           </div>
           <!-- Content Row -->
           <div class="row">
-                <!-- Area Chart -->
-                <div class="col-xl-12 col-lg-12 flex-wrap">             
-                      {{#if createItem}}
-                        {{>createitem}}
-                      {{else}}
-                        {{>gridEquipments}}
-                      {{/if}}           
-                </div>
-            <!-- /.container-fluid -->
             {{else}}
             <div class="row">
               <!-- Area Chart -->
@@ -142,6 +85,27 @@
         $('#mydiv').fadeOut('fast');
     }, 6000);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+  <script src="https://cdn.tutorialjinni.com/FileSaver.js/1.3.8/FileSaver.js"></script>
+  <script>  
+    const json = JSON.stringify( { name: 'ed',
+      receiptId: 1,
+      price1: 1,
+      price2: 1
+    });
+
+  createAndDownloadPdf = () => {
+
+    axios.post('/create-pdf', json )
+      .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
+      .then((res) => {
+        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+
+        saveAs(pdfBlob, 'newPdf.pdf');
+      })
+  }
+  </script>
+  
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
