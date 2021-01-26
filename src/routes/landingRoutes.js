@@ -6,7 +6,13 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const{APIKEY} = require('../config/config');
 const sgMail = require('@sendgrid/mail');
+const querystring = require('querystring');
 sgMail.setApiKey(APIKEY);
+const jwt = require('jsonwebtoken');
+const accessTokenSecret = 'youraccesstokensecret';
+const refreshTokenSecret = 'yourrefreshtokensecrethere';
+const refreshTokens = [];
+
 
 // Directory Paths
 const directorio_partials = path.join(__dirname, './../templates/partials');
@@ -35,33 +41,34 @@ app.get('/error', (req, res) =>{
 	})
 });
 
-app.get('/loginregister', (req, res) =>{
-  	res.render('loginregister', {
+app.get('/login', (req, res) =>{
+  	res.render('login', {
+		title: 'login' 
 	})
 });
 
-app.post('/loginregister', (req, res) =>{
+app.post('/login', (req, res) =>{
     User.findOne({email : req.body.inputEmail}, (err,result)=>{
 			if(err){
 				console.log(err)
-				res.render('loginregister', {
+				res.render('login', {
 								registro: req.body.registro,
 								show: "Error"
 				})
 			}
 			if(!result){
-				res.render('loginregister', {
+				res.render('login', {
 					login: req.body.login,
 					show: "Usuario o contraseña incorrectas",
-					path: "/loginregister",
+					path: "/login",
 					button: "danger"
 				})
 			}
 			if(result && !bcrypt.compareSync(req.body.inputPassword, result.password)){
-				res.render('loginregister', {
+				res.render('login', {
 					login: req.body.login,
 					show: "Usuario o contraseña incorrectas",
-					path: "/loginregister",
+					path: "/login",
 					button: "danger"
 				})
 			}
@@ -78,7 +85,16 @@ app.post('/loginregister', (req, res) =>{
 				if(result.avatar){
 					req.session.avatar = result.avatar.toString('base64')
 				}
+				//jwt
+				const accessToken = jwt.sign({ user: result._id, role: result.roll }, accessTokenSecret, { expiresIn: '20m' });
+				const refreshToken = jwt.sign({ user: result._id, role: result.roll }, refreshTokenSecret);
+				refreshTokens.push(refreshToken);
+				
+				data = { accessToken,refreshToken }
+
+				/* res.redirect('/dashboardadmin?' + querystring.stringify(data)) */
 				res.redirect('/dashboardadmin')
+				
 			}
 			if(result && bcrypt.compareSync(req.body.inputPassword, result.password) && result.roll == "usuario"){
 				// session variables

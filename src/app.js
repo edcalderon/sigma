@@ -83,13 +83,13 @@ app.use(session({
 	saveUninitialized: true
 }))
 
+
 // Static
 const directory_public = path.join(__dirname, '../public');
 app.use(express.static(directory_public));
 
-// Middlewares
+// Middlewares GLOBAL
 app.use((req,res,next) => {
-
   if(req.session.user){
     res.locals.session = true
     res.locals.user  = req.session.user
@@ -178,4 +178,19 @@ mongoose.connect(URLDB, {useNewUrlParser:true},(err, result) =>{
 //var puerto = 3000
 server.listen(PORT, ()=>{
 	console.log('Escuchando en el puerto ' + PORT)
+});
+
+const livereload = require("livereload");
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'))
+
+const connectLivereload = require("connect-livereload");
+
+app.use(connectLivereload());
+
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
 });

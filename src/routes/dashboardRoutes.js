@@ -11,18 +11,34 @@ const session = require('express-session');
 const multer = require('multer');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(APIKEY);
-const { jsPDF } = require("jspdf");
-const fs = require('fs');
 const pdf = require('html-pdf');
 const pdfTemplate = require('../documents');
-//var $ = require("jquery");
+const jwt = require('jsonwebtoken');
+const accessTokenSecret = 'youraccesstokensecret';
+
+//JWT middleware
+const authenticateJWT = (req, res, next) => {
+	const authHeader = req.headers.authorization;
+  
+	if (authHeader) {
+		const token = authHeader.split(' ')[1];
+  
+		jwt.verify(token, accessTokenSecret, (err, user) => {
+			if (err) {
+				return res.sendStatus(403);
+			}
+			req.user = user;
+			next();
+		});
+	} else {
+		res.sendStatus(401);
+	}
+};
 
 // Models mongodb
 const User = require('../models/user');
 const Course = require('../models/course');
-const Equipment = require('../models/equipment');
-const Borrow = require('../models/borrow');
-const { mapReduce } = require('../models/user');
+const Equipment = require('../models/equipment');;
 
 // Directory Paths
 const directorio_partials = path.join(__dirname, './../templates/partials');
@@ -43,7 +59,7 @@ app.use(session({
 	}
 }))
 
-app.get('/dashboarduser', (req, res) =>{
+app.get('/dashboarduser', authenticateJWT, (req, res) =>{
 	res.render ('dashboarduser',{
 
 	})
@@ -145,27 +161,16 @@ Course.find(conditions,(err,result)=>{
 	}
 });
 
-app.get('/dashboardadmin', (req, res) =>{
-	Equipment.find({},(err,result)=>{
-		if (err){
-			return res.render('dashboardadmin',{
-				resultshow2: "Hubo un error: " + err,
-				cardcolor2: "danger"
-		 })
-		}
-		req.session.equipments = result
-		res.render ('dashboardadmin',{
-			equipmentsList: req.session.equipments,
-			courses : req.session.courses,
-			verCursosDisponibles : req.session.verCursosDisponibles,
-			misusuarios: req.session.misusuarios,
-			verUsuarios: req.session.verUsuarios,
-			data: req.session.datos,
-			cantidadCursosDisponibles: req.session.cursosDisponibles,
-			cursosCerrados: req.session.cursosCerrados,
-			ganancia: req.session.ganancia,
-			coordinador: req.session.coordinador
-		})
+app.get('/dashboardadmin', (req, res) => {
+	initialState = true
+	if(req.query.offgrid || req.query.ongrid){
+		initialState = false
+	}
+	res.render ('dashboardadmin',{
+	   coordinador: req.session.coordinador,
+	   offgrid: req.query.offgrid,
+	   ongrid: req.query.ongrid,
+	   initialState: initialState
 	})
 });
 

@@ -1,82 +1,54 @@
 {{>headdashboard}}
 <body id="page-top" class="sidebar-toggled">
-  <!-- Page Wrapper -->
   <div id="wrapper">
-    <!-- Sidebar-->
     {{#if coordinador}}
       {{>sidebardashboard}}
-    {{/if}}
-    <!-- Content Wrapper -->
+    {{/if}}  
     <div id="content-wrapper" class="d-flex flex-column">
-      <!-- Main Content -->
       <div id="content">
-        <!-- Topbar -->
         {{>topbar}}
-        <!-- End of Topbar -->
-        <!-- Begin Page Content -->
         <div class="container-fluid">
-          {{#if coordinador}}
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"></h1>
-          </div>
-          <!-- Content Row -->
-          
+         {{#if coordinador}}  
           <div class="row">
-            <div class="col-xl-12 col-md-12 mb-12">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Cotizador</div>
-                        <form>
-                          <label for="fname">First name:</label><br>
-                          <input type="text" id="fname" name="fname" value="John"><br>
-                          <label for="lname">Last name:</label><br>
-                          <input type="text" id="lname" name="lname" value="Doe"><br><br>
-                           <button type="button" onclick="createAndDownloadPdf()">Click me</button> 
-                        </form> 
+            <div class="col-xl-12 col-md-12 mb-12">  
+              {{#if initialState}}
+                <h5 class="sub-heading">Seleccione el tipo de cotizacion</h5>
+                <div class="row px-1 radio-group">
+                    <div class="card-block text-center radio">
+                        <a class="collapse-item" href="/dashboardadmin?offgrid=true">
+                          <div class="image-icon"> <img class="icon icon1" src="https://cdn3.iconfinder.com/data/icons/solar-powercons/512/solarpower-solar-grid-512-512.png"> </div>
+                          <p class="sub-desc">ON-grid</p>
+                        </a>
+                      
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-desktop fa-2x text-gray-300"></i>
+                    <div  class="card-block text-center radio">
+                      <a class="collapse-item" href="/dashboardadmin?ongrid=true">
+                        <div class="image-icon"> <img class="icon icon1 fit-image" src="https://cdn3.iconfinder.com/data/icons/solar-powercons/512/solarpower-battery-storage-512-512.png"> </div>
+                        <p class="sub-desc">OFF-grid</p>
+                      </a>
                     </div>
-                  </div>
                 </div>
-              </div>
+              {{/if}} 
+              {{#if offgrid}}
+               {{>formoffgrid}}
+              {{/if}}  
+              {{#if ongrid}}
+               {{>formongrid}} 
+              {{/if}}  
             </div>
-          </div>
-          <!-- Content Row -->
-          <div class="row">
-            {{else}}
-            <div class="row">
-              <!-- Area Chart -->
-              <div class="col-xl-12 col-lg-8">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Upss</h6>
-
-                  </div>
-                  <!-- Card Body -->
-                  <div  id="container" class="card-body">
-                            <h2>Ups! no tienes acceso a esta pagina logeatee!</h2>
-                  </div>
-                </div>
-              </div>
-              <!-- Pie Chart -->
-              <!-- Content Row final space -->
-                  <div class="row">
-                    <!-- Content Column -->
-                      <div class="col-lg-6 mb-4"></div>
-                      <div class="col-lg-6 mb-4"></div>
-                  </div>
-              <!-- Content Row final space-->
-            </div>
-            {{/if}}
-          </div>
-       </div>
-      </div>
-       {{>footerdashboard}}
+          </div>  
+         {{else}}
+           <div class="row">
+              <div class="col-xl-12 col-md-12 mb-12">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h3 mb-0 text-gray-800">Ups! no tienes acceso a esta pagina logeatee!</h1>
+                </div> 
+               </div>
+           </div> 
+         {{/if}}       
+        </div>
+      </div> 
+      {{>footerdashboard}}
     </div> 
   </div>  
 
@@ -106,7 +78,6 @@
   }
   </script>
   
-
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -125,7 +96,6 @@
       </div>
     </div>
   </div>
-
 
 </body>
 </html>

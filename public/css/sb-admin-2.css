@@ -2632,14 +2632,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+  background-color: #45864a;
+  border-color: #45864a;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #2e59d9;
-  border-color: #2653d4;
+  background-color: #e4cb22;
+  border-color: #e4cb22;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -10701,9 +10701,16 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #0d13a2;
+  background-color: #478a4b;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
-  background-image: linear-gradient(180deg, #0d13a2 10%, #0d13a2 100%);
+  background-image: linear-gradient(180deg, #83c0bf 10%, #478a4b 100%);
+  background-size: cover;
+}
+
+.bg-gradient-sidebar {
+  background-color: #478a4b;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
+  background-image: linear-gradient(180deg, #478a4b 50%, #478a4b 100%);
   background-size: cover;
 }
 
@@ -11612,14 +11619,14 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://30blinddates.files.wordpress.com/2014/06/shutterstock_174215792.jpg?w=553&h=508");
+  background: url("https://wallpaperaccess.com/full/1663640.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
   /*background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");*/
-  background: url("https://www.telemundo.com/sites/nbcutelemundo/files/images/gallery/2016/08/16/estudiantes-de-la-universidad-felices_0.jpg");
+  background: url("https://wallpaperaccess.com/full/1893127.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -12524,4 +12531,63 @@ border-radius: 50%;
 
 .number3 {
   font-weight: 500
+}
+
+/* radio selected card */
+
+
+.radio {
+  display: inline-block;
+  border-radius: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #BDBDBD;
+  font-weight: 500;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%)
+}
+
+.radio:hover {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.radio.selected {
+  border: 1px solid #F9A825;
+  box-shadow: 0px 8px 16px 0px #EEEEEE;
+  color: #29B6F6 !important;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  filter: grayscale(0%)
+}
+
+.card-block {
+  border: 1px solid #CFD8DC;
+  width: 45%;
+  margin: 2.5%;
+  padding: 20px 25px 15px 25px
+}
+
+@media screen and (max-width: 768px) {
+  .card-block {
+      padding: 20px 20px 0px 20px;
+      height: 250px
+  }
+}
+
+.icon {
+  width: 85px;
+  height: 100px
+}
+
+.image-icon {
+  width: 85px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px
 }
