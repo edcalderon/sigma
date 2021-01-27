@@ -1,64 +1,81 @@
- <h5 class="sub-heading">Onn Grid</h5>
+ <h5 class="sub-heading">Cotización On Grid</h5>
  <div id="smartwizard">
      <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152092/smartwizard/smart_wizard.min.css" rel="stylesheet"  />
      <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152091/smartwizard/smart_wizard_theme_arrows.min.css" rel="stylesheet"  />
      <script type="text/javascript" src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152197/smartwizard/jquery.smartWizard.min.js"></script>
         <ul>
-            <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-            <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-            <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-            <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
+            <li><a href="#step-1">Paso 1<br /><small>Información del cotizador</small></a></li>
+            <li><a href="#step-2">Paso 2<br /><small>Información del cotizante</small></a></li>
+            <li><a href="#step-3">Paso 3<br /><small>Costos y Margen</small></a></li>
+            <li><a href="#step-4">Paso 4<br /><small>Confirmar</small></a></li>
         </ul>
         <div class="mt-4">
             <div id="step-1">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre del cotizador" required> <span class="span-form">Nombre del cotizador </span> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> <span class="span-form">Email </span> </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Cargo" required> <span class="span-form">Cargo</span> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Celular" required> <span class="span-form">Celular</span> </div>
                 </div>
             </div>
             <div id="step-2">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Nombre" required>  <span class="span-form">Nombre</span> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Cuidad" required>  <span class="span-form">Cuidad </span> </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Departamento" required>  <span class="span-form">Departamento </span> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Dirección" required>  <span class="span-form">Dirección </span></div>
                 </div>
             </div>
             <div id="step-3" class="">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Número de paneles" required>  <span class="span-form">Número de paneles</span></div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Precio por panel" required>  <span class="span-form">Precio por panel </span></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Margen" required>  <span class="span-form">Margen</span></div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Iva" required>  <span class="span-form">Iva</span> </div>
                 </div>
             </div>
             <div id="step-4" class="">
                 <div class="row">
-                    <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send you a confirmation email. We will review your details and revert back.</span> </div>
+                    <div class="col-md-12"> <span>Confirma los datos y genera la cotización</span> </div>
                 </div>
             </div>
         </div>
 </div>
 
 <script>
-     $(document).ready(function(){
-
-    $('#smartwizard').smartWizard({
-    selected: 0,
-    theme: 'arrows',
-    autoAdjustHeight:true,
-    transitionEffect:'fade',
-    showStepURLhash: false,
-
+    $(document).ready(function(){
+        $('#smartwizard').smartWizard({
+            selected: 0,
+            theme: 'arrows',
+            autoAdjustHeight:true,
+            transitionEffect:'fade',
+            showStepURLhash: false,
+        });
     });
 
+    inputs = document.querySelectorAll('input')
+    inputs.forEach(element => {
+        element.addEventListener('input', e => {
+            console.log(e.target.value)
+            if(e.target.value){
+                e.target.classList.add('has-value')
+            }else{
+                e.target.classList.remove('has-value')
+            }
+        })
     });
+    $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
+        if(stepIndex == 3){
+
+        }
+    });
+
+    
+   
 </script>

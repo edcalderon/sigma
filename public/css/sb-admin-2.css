@@ -12591,3 +12591,29 @@ border-radius: 50%;
   margin-right: auto;
   margin-bottom: 20px
 }
+
+/* label form aniamtion  */
+
+label{
+  position: relative;
+}
+
+.span-form{
+  position: absolute;
+  opacity: 0.6;
+  top: 0.45rem;
+  left: 1.55rem;
+  cursor: text;
+  transition: all 0.5s ease-in-out;
+}
+
+input.has-value + .span-form,
+input:focus + .span-form{
+  opacity: 1;
+  transform: translate(-2px, -1.9em);
+  font-size: 0.8em;
+  cursor: default;
+}
+.step-content{
+  background-color: transparent !important;
+}
