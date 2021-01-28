@@ -67,7 +67,6 @@ app.get('/dashboarduser', authenticateJWT, (req, res) =>{
 
 app.post('/create-pdf', (req, res) => {
 	data = Object.keys(JSON.parse(JSON.stringify(req.body))); // THIS IS HORRIBLE CHANGE PLS
-	console.log(JSON.parse(data[0]))
     pdf.create(pdfTemplate(JSON.parse(data[0])), {}).toFile(`${__dirname}/result.pdf`, (err) => {
         if(err) {
             res.send(Promise.reject());

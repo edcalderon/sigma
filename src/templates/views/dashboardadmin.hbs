@@ -63,6 +63,8 @@
   <script>  
 
   createAndDownloadPdf = (data) => {
+    console.log("here " + data)
+    data = JSON.stringify(data)
     axios.post('/create-pdf', data )
       .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
       .then((res) => {

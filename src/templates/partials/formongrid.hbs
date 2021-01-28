@@ -12,8 +12,8 @@
         <div class="mt-4">          
             <div id="step-1">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" id="nombre-cotizador" class="form-control" placeholder="Nombre del cotizador" required> <span class="span-form">Nombre del cotizador </span> </div>
-                    <div class="col-md-6"> <input type="text" id="email-cotizador" class="form-control" placeholder="Email" required> <span class="span-form">Email </span> </div>
+                    <div class="col-md-6"> <input type="text" id="nombre_cotizador" class="form-control" placeholder="Nombre del cotizador" required> <span class="span-form">Nombre del cotizador </span> </div>
+                    <div class="col-md-6"> <input type="text" id="email_cotizador" class="form-control" placeholder="Email" required> <span class="span-form">Email </span> </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"> <input type="text" id="cargo" class="form-control" placeholder="Cargo" required> <span class="span-form">Cargo</span> </div>
@@ -22,7 +22,7 @@
             </div>
             <div id="step-2">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" id="nombre-cotizante" class="form-control" placeholder="Nombre" required>  <span class="span-form">Nombre</span> </div>
+                    <div class="col-md-6"> <input type="text" id="nombre_cotizante" class="form-control" placeholder="Nombre" required>  <span class="span-form">Nombre</span> </div>
                     <div class="col-md-6"> <input type="text" id="cuidad" class="form-control" placeholder="Cuidad" required>  <span class="span-form">Cuidad </span> </div>
                 </div>
                 <div class="row mt-3">
@@ -32,8 +32,8 @@
             </div>
             <div id="step-3" class="">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" id="numero-paneles" class="form-control" placeholder="Número de paneles" required>  <span class="span-form">Número de paneles</span></div>
-                    <div class="col-md-6"> <input type="text" id="precio-panel" class="form-control" placeholder="Precio por panel" required>  <span class="span-form">Precio por panel </span></div>
+                    <div class="col-md-6"> <input type="text" id="numero_paneles" class="form-control" placeholder="Número de paneles" required>  <span class="span-form">Número de paneles</span></div>
+                    <div class="col-md-6"> <input type="text" id="precio_panel" class="form-control" placeholder="Precio por panel" required>  <span class="span-form">Precio por panel </span></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"> <input type="text" id="margen" class="form-control" placeholder="Margen" required>  <span class="span-form">Margen</span></div>
@@ -42,9 +42,8 @@
             </div>
             <div id="step-4" class="">
                 <div class="row mt-3">
-                    <div class="col-md-12"> <span>Confirma los datos y genera la cotización </span> 
-                    <!-- Auto width -->
-                        <button class="btn" onclick="handleSubmit()" ><i class="fa fa-download"></i> Descargar</button>
+                    <div id="insertHere" class="col-md-12"> 
+                    <!-- Button here -->
                     </div>
                 </div>
             </div>  
@@ -74,26 +73,35 @@
     });
 
     $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
-        console.log(stepIndex)
         if(stepIndex == 3){
-            let nombre_cotizador = document.getElementById('nombre-cotizador').value
-            console.log(nombre_cotizador)
+            $('#insertHere').empty()
+            let nombre_cotizador = document.getElementById('nombre_cotizador').value
+            let email_cotizador = document.getElementById('email_cotizador').value
+            let cargo = document.getElementById('cargo').value
+            let celular = document.getElementById('celular').value
+            let nombre_cotizante = document.getElementById('nombre_cotizante').value
+            let cuidad = document.getElementById('cuidad').value
+            let departamento = document.getElementById('departamento').value
+            let direccion = document.getElementById('direccion').value
+            let numero_paneles = document.getElementById('numero_paneles').value
+            let precio_panel = document.getElementById('precio_panel').value
+            let margen = document.getElementById('margen').value
+            let iva = document.getElementById('iva').value
+            if(nombre_cotizador && email_cotizador && cargo && celular && nombre_cotizador && cuidad && departamento && direccion && numero_paneles && precio_panel && margen && iva){
+            let data = JSON.stringify( 
+                        { 
+                            name: nombre_cotizador,
+                            receiptId: 2,
+                            price1: 1,
+                            price2: 1
+                        }
+                    );         
+            $('#insertHere').append($(`<span>Todo parece correcto, ya puedes </span> <button class='btn' onclick='createAndDownloadPdf(${data})' ><i class='fa fa-download'></i> Descargar </button>`))  
+            }else{
+                $('#insertHere').append($('<span>Parece que hay capos vacios, verifica para generar la cotización. </span>'))             
+            }
         };
     });
-
-    function handleSubmit(event) {
-
-        const json = JSON.stringify( 
-            { 
-                name: nombre_cotizador,
-                receiptId: 1,
-                price1: 1,
-                price2: 1
-            }
-        );
-        createAndDownloadPdf(json)
-    }
-
 
 </script>
 
