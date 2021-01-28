@@ -5,7 +5,7 @@
   "main": "src/app",
   "scripts": {
     "start": "node src/app.js",
-    "watch": "nodemon --ignore public --ext hbs,js"
+    "dev": "nodemon --ignore public --ext hbs,js"
   },
   "author": "Valentina",
   "license": "ISC",

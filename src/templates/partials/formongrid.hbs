@@ -1,52 +1,55 @@
  <h5 class="sub-heading">Cotización On Grid</h5>
- <div id="smartwizard">
-     <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152092/smartwizard/smart_wizard.min.css" rel="stylesheet"  />
-     <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152091/smartwizard/smart_wizard_theme_arrows.min.css" rel="stylesheet"  />
-     <script type="text/javascript" src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152197/smartwizard/jquery.smartWizard.min.js"></script>
+    <div id="smartwizard">
+        <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152092/smartwizard/smart_wizard.min.css" rel="stylesheet"  />
+        <link href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152091/smartwizard/smart_wizard_theme_arrows.min.css" rel="stylesheet"  />
+        <script type="text/javascript" src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152197/smartwizard/jquery.smartWizard.min.js"></script>
         <ul>
             <li><a href="#step-1">Paso 1<br /><small>Información del cotizador</small></a></li>
             <li><a href="#step-2">Paso 2<br /><small>Información del cotizante</small></a></li>
             <li><a href="#step-3">Paso 3<br /><small>Costos y Margen</small></a></li>
             <li><a href="#step-4">Paso 4<br /><small>Confirmar</small></a></li>
         </ul>
-        <div class="mt-4">
+        <div class="mt-4">          
             <div id="step-1">
                 <div class="row">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre del cotizador" required> <span class="span-form">Nombre del cotizador </span> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> <span class="span-form">Email </span> </div>
+                    <div class="col-md-6"> <input type="text" id="nombre-cotizador" class="form-control" placeholder="Nombre del cotizador" required> <span class="span-form">Nombre del cotizador </span> </div>
+                    <div class="col-md-6"> <input type="text" id="email-cotizador" class="form-control" placeholder="Email" required> <span class="span-form">Email </span> </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Cargo" required> <span class="span-form">Cargo</span> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Celular" required> <span class="span-form">Celular</span> </div>
+                    <div class="col-md-6"> <input type="text" id="cargo" class="form-control" placeholder="Cargo" required> <span class="span-form">Cargo</span> </div>
+                    <div class="col-md-6"> <input type="text" id="celular" class="form-control" placeholder="Celular" required> <span class="span-form">Celular</span> </div>
                 </div>
             </div>
             <div id="step-2">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Nombre" required>  <span class="span-form">Nombre</span> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Cuidad" required>  <span class="span-form">Cuidad </span> </div>
+                    <div class="col-md-6"> <input type="text" id="nombre-cotizante" class="form-control" placeholder="Nombre" required>  <span class="span-form">Nombre</span> </div>
+                    <div class="col-md-6"> <input type="text" id="cuidad" class="form-control" placeholder="Cuidad" required>  <span class="span-form">Cuidad </span> </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Departamento" required>  <span class="span-form">Departamento </span> </div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Dirección" required>  <span class="span-form">Dirección </span></div>
+                    <div class="col-md-6"> <input type="text" id="departamento" class="form-control" placeholder="Departamento" required>  <span class="span-form">Departamento </span> </div>
+                    <div class="col-md-6"> <input type="text" id="direccion" class="form-control" placeholder="Dirección" required>  <span class="span-form">Dirección </span></div>
                 </div>
             </div>
             <div id="step-3" class="">
                 <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Número de paneles" required>  <span class="span-form">Número de paneles</span></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Precio por panel" required>  <span class="span-form">Precio por panel </span></div>
+                    <div class="col-md-6"> <input type="text" id="numero-paneles" class="form-control" placeholder="Número de paneles" required>  <span class="span-form">Número de paneles</span></div>
+                    <div class="col-md-6"> <input type="text" id="precio-panel" class="form-control" placeholder="Precio por panel" required>  <span class="span-form">Precio por panel </span></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Margen" required>  <span class="span-form">Margen</span></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Iva" required>  <span class="span-form">Iva</span> </div>
+                    <div class="col-md-6"> <input type="text" id="margen" class="form-control" placeholder="Margen" required>  <span class="span-form">Margen</span></div>
+                    <div class="col-md-6"> <input type="text" id="iva"  class="form-control" placeholder="Iva" required>  <span class="span-form">Iva</span> </div>
                 </div>
             </div>
             <div id="step-4" class="">
-                <div class="row">
-                    <div class="col-md-12"> <span>Confirma los datos y genera la cotización</span> </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"> <span>Confirma los datos y genera la cotización </span> 
+                    <!-- Auto width -->
+                        <button class="btn" onclick="handleSubmit()" ><i class="fa fa-download"></i> Descargar</button>
+                    </div>
                 </div>
-            </div>
+            </div>  
         </div>
-</div>
+    </div>
 
 <script>
     $(document).ready(function(){
@@ -62,7 +65,6 @@
     inputs = document.querySelectorAll('input')
     inputs.forEach(element => {
         element.addEventListener('input', e => {
-            console.log(e.target.value)
             if(e.target.value){
                 e.target.classList.add('has-value')
             }else{
@@ -70,12 +72,28 @@
             }
         })
     });
-    $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
-        if(stepIndex == 3){
 
-        }
+    $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
+        console.log(stepIndex)
+        if(stepIndex == 3){
+            let nombre_cotizador = document.getElementById('nombre-cotizador').value
+            console.log(nombre_cotizador)
+        };
     });
 
-    
-   
+    function handleSubmit(event) {
+
+        const json = JSON.stringify( 
+            { 
+                name: nombre_cotizador,
+                receiptId: 1,
+                price1: 1,
+                price2: 1
+            }
+        );
+        createAndDownloadPdf(json)
+    }
+
+
 </script>
+

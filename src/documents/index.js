@@ -86,10 +86,11 @@ return `
                    <td colspan="2">
                       <table>
                          <tr>
-                            <td class="title"><img  src="https://i2.wp.com/cleverlogos.co/wp-content/uploads/2018/05/reciepthound_1.jpg?fit=800%2C600&ssl=1"
+                            <td class="title"><img  src="https://drive.google.com/uc?export=view&id=1lXnZuUp0QFWqwtR5WyUmHT3WtnDj0SWM"
                                style="width:100%; max-width:156px;"></td>
                             <td>
-                               Datum: ${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}
+                               Cotización No. ${receiptId} <br>
+                               Fecha: ${`${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}.`}
                             </td>
                          </tr>
                       </table>
@@ -100,18 +101,19 @@ return `
                       <table>
                          <tr>
                             <td>
-                               Customer name: ${name}
+                               ${name}
                             </td>
                             <td>
-                               Receipt number: ${receiptId}
+                               ${receiptId}
                             </td>
                          </tr>
                       </table>
                    </td>
                 </tr>
+                <h4 class="justify-left">Propuesta de inversión</h4 >
                 <tr class="heading">
-                   <td>Bought items:</td>
-                   <td>Price</td>
+                   <td>Detalle:</td>
+                   <td>precio</td>
                 </tr>
                 <tr class="item">
                    <td>First item:</td>
